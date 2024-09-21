@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary
 
-engine = create_engine('sqlite+pysqlite:///post.db', echo=True)
+engine = create_engine('sqlite+pysqlite:///database.db', echo=True)
 metadata = MetaData()
 
 

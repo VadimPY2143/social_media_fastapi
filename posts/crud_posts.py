@@ -41,7 +41,6 @@ def read_post(post_id: int) -> dict:
         stmt = select(post_table).where(post_table.c.id == post_id)
         result = session.execute(stmt).fetchone()
         if result:
-            print(result)
             result_dict = {
                 'id': result[0],
                 'post_name': result[1],

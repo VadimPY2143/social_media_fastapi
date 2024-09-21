@@ -2,7 +2,7 @@ from fastapi import HTTPException, APIRouter, status, Depends
 from sqlalchemy import insert, select, update, delete
 from sqlalchemy.orm import Session
 from database import user_table, engine
-from .models import User, UpdateUser
+from .models import UserCreate, UpdateUser
 
 
 router = APIRouter(
@@ -12,7 +12,7 @@ router = APIRouter(
 
 
 @router.post('/user/create')
-async def create_user(user: User = Depends()) -> dict:
+async def create_user(user: UserCreate = Depends()) -> dict:
     with Session(engine) as session:
         stmt = insert(user_table).values(
             username=user.username,
