@@ -40,7 +40,7 @@ async def tweet_get(query: str, tweets: int, language: str):
     if len(post) != 0:
         result_dict = {
             index + 1: {
-                'tweet_name': item[0],
+                'tweet_name': translate_message(item[0], language),
                 'tweet_text': re.sub(r'http\S+$', '', translate_message(item[1], language)).strip(),
                 'tweet_image': item[1].split()[-1] if 'https' in item[1].split()[-1] else 'no image',
                 'likes': item[2]

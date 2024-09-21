@@ -7,6 +7,11 @@ class UserCreate(BaseModel):
     password: SecretStr
 
 
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: SecretStr
+
+
 class UpdateUser(BaseModel):
     new_username: str
     old_email: str

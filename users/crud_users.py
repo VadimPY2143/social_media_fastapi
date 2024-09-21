@@ -2,7 +2,7 @@ from fastapi import HTTPException, APIRouter, status, Depends
 from sqlalchemy import insert, select, update, delete
 from sqlalchemy.orm import Session
 from database import user_table, engine
-from .models import UserCreate, UpdateUser
+from .models import UserCreate, UpdateUser, UserLogin
 
 
 router = APIRouter(
@@ -12,7 +12,7 @@ router = APIRouter(
 
 
 @router.post('/user/create')
-async def create_user(user: UserCreate = Depends()) -> dict:
+async def register_user(user: UserCreate = Depends()) -> dict:
     with Session(engine) as session:
         stmt = insert(user_table).values(
             username=user.username,
@@ -27,6 +27,17 @@ async def create_user(user: UserCreate = Depends()) -> dict:
         'email': user.email,
         'password': '*' * len(user.password)
     }
+
+
+@router.post('/user/login')
+def login_user(user: UserLogin = Depends()) -> dict:
+    with Session(engine) as session:
+        stmt = select(user_table).where(user_table.c.email == user.email)
+        result = session.execute(stmt).fetchone()
+        if result:
+            if user.email == result[2] and user.password.get_secret_value() == result[3]:
+                return {'message': 'Success!'}
+        raise HTTPException(status_code=403, detail='Wrong email or password!')
 
 
 @router.get('/user/get')
