@@ -2,7 +2,7 @@ from fastapi import HTTPException, APIRouter, UploadFile, File, Depends
 from sqlalchemy import insert, select, update, delete
 from sqlalchemy.orm import Session
 from database import post_table, engine
-from posts.models import Post
+from posts.models import Post, PostUpdate
 
 
 router = APIRouter(
@@ -53,7 +53,7 @@ def read_post(post_id: int) -> dict:
 
 
 @router.put('/post/update')
-def post_update(post: Post, post_id: int) -> dict:
+def post_update(post_id: int, post: PostUpdate = Depends()) -> dict:
     with Session(engine) as session:
         stmt = update(post_table).where(post_table.c.id == post_id).values(post_name=post.post_name, text=post.text)
         session.execute(stmt)

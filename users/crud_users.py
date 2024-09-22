@@ -57,7 +57,7 @@ async def get_user(user_id: int) -> dict:
 
 
 @router.put('/user/update')
-async def update_user(user_upd: UpdateUser, user_id: int) -> dict:
+async def update_user(user_id: int, user_upd: UpdateUser = Depends()) -> dict:
     with Session(engine) as session:
         stmt = select(user_table).where(user_table.c.id == user_id)
         user_data = session.execute(stmt).fetchone()
