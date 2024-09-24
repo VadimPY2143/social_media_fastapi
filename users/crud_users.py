@@ -61,10 +61,10 @@ async def update_user(user_id: int, user_upd: UpdateUser = Depends()) -> dict:
     with Session(engine) as session:
         stmt = select(user_table).where(user_table.c.id == user_id)
         user_data = session.execute(stmt).fetchone()
-        if user_data[2] == user_upd.old_email and user_data[3] == user_upd.old_password:
-            stmt = update(user_table).where(user_table.c.id == user_id).values(username=user_upd.new_username,
+        if user_data[2] == user_upd.old_email and user_data[3] == user_upd.old_password.get_secret_value():
+            stmt = update(user_table).where(user_table.c.id == user_id).values(username=user_upd.new_username if user_upd.new_username else user_data[1],
                                                                                email=user_upd.new_email,
-                                                                               password=user_upd.new_password)
+                                                                               password=user_upd.new_password.get_secret_value())
             session.execute(stmt)
             session.commit()
             stmt = select(user_table).where(user_table.c.id == user_id)

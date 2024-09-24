@@ -1,10 +1,10 @@
 # Social Media Project
-```created by Vadim Papusha```
+```created by Vadym Papusha```
 
 ## Functional:
 
 1. CRUD for posts
-2. CRUD and authentication for users
+2. CRUD, login and registration for users
 3. Parsing from Twitter with translation of the posts
 
 
