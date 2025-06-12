@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary, ForeignKey
 
 engine = create_engine('sqlite+pysqlite:///database.db', echo=True)
 metadata = MetaData()
@@ -7,9 +7,9 @@ metadata = MetaData()
 post_table = Table(
     'posts',
     metadata,
-    Column('id', Integer, primary_key=True),
+    Column('id', Integer, primary_key=True, autoincrement=True),
     Column('post_name', String(20)),
-    Column('author', String(20)),
+    Column('author', ForeignKey('users.username')),
     Column('text', String(100)),
     Column('picture', LargeBinary, nullable=True),
 )

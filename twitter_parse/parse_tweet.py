@@ -1,6 +1,6 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from .utils import tweet_get
-
+from .models import Tweet
 
 router = APIRouter(
     tags=['Twitter'],
@@ -9,5 +9,5 @@ router = APIRouter(
 
 
 @router.get('/tweet/get')
-async def get_tweet(query: str, tweets: int, language: str) -> dict:
-    return await tweet_get(query=query, tweets=tweets, language=language)
+async def get_tweet(tweet: Tweet = Depends()) -> dict:
+    return await tweet_get(query=tweet.query, tweets=tweet.tweets, language=tweet.lang)

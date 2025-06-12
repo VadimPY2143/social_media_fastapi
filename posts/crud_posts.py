@@ -51,6 +51,25 @@ def read_post(post_id: int) -> dict:
             return result_dict
         raise HTTPException(status_code=404, detail=f'There is no post with id {post_id}')
 
+@router.post('/post/get_all')
+def read_all_posts() -> dict:
+    with Session(engine) as session:
+        stmt = select(post_table)
+        result = session.execute(stmt)
+        result_dict = {}
+
+        for data in result:
+            post = {'id': data[0],
+                    'post_name': data[1],
+                    'author': data[2],
+                    'text': data[3],
+                    'picture': data[4] is not None}
+            result_dict[data[0]] = post
+
+        if result_dict:
+            return result_dict
+        raise HTTPException(status_code=404, detail=f'There is no posts')
+
 
 @router.put('/post/update')
 def post_update(post_id: int, post: PostUpdate = Depends()) -> dict:
@@ -58,8 +77,10 @@ def post_update(post_id: int, post: PostUpdate = Depends()) -> dict:
         stmt = update(post_table).where(post_table.c.id == post_id).values(post_name=post.post_name, text=post.text)
         session.execute(stmt)
         session.commit()
+
         stmt = select(post_table).where(post_table.c.id == post_id)
         result = session.execute(stmt).fetchone()
+
         if result:
             result_dict = {
                 'id': result[0],
@@ -68,6 +89,7 @@ def post_update(post_id: int, post: PostUpdate = Depends()) -> dict:
                 'text': result[3],
                 'picture': result[4] is not None
             }
+            session.close()
             return result_dict
         raise HTTPException(status_code=404, detail=f'There is no post with id {post_id}')
 
