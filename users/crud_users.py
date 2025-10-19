@@ -34,6 +34,7 @@ def login_user(user: UserLogin = Depends()) -> dict:
     with Session(engine) as session:
         stmt = select(user_table).where(user_table.c.email == user.email)
         result = session.execute(stmt).fetchone()
+        session.close()
         if result:
             if user.email == result[2] and user.password.get_secret_value() == result[3]:
                 return {'message': 'Success!'}
@@ -63,8 +64,8 @@ async def update_user(user_id: int, user_upd: UpdateUser = Depends()) -> dict:
         user_data = session.execute(stmt).fetchone()
         if user_data[2] == user_upd.old_email and user_data[3] == user_upd.old_password.get_secret_value():
             stmt = update(user_table).where(user_table.c.id == user_id).values(username=user_upd.new_username if user_upd.new_username else user_data[1],
-                                                                               email=user_upd.new_email,
-                                                                               password=user_upd.new_password.get_secret_value())
+                                                                               email=user_upd.new_email if user_upd.new_email else user_data[2],
+                                                                               password=user_upd.new_password.get_secret_value() if user_upd.new_password else user_data[3])
             session.execute(stmt)
             session.commit()
             stmt = select(user_table).where(user_table.c.id == user_id)
@@ -96,6 +97,7 @@ async def delete_user(user_id: int) -> dict:
             return {'message': 'Successfully deleted'}
 
         raise HTTPException(status_code=404, detail=f'There is no user with id {user_id}')
+
 
 
 

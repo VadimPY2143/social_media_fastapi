@@ -7,7 +7,7 @@ from configparser import ConfigParser
 from twikit import Client
 from fastapi import HTTPException
 from twitter_parse.utils import translate_message
-from twitter_parse.utils import find_tweets
+from twitter_parse.utils import search_tweets
 from twitter_parse.parse_tweet import tweet_get
 
 
@@ -31,14 +31,14 @@ async def test_find_tweets(mock_client, mock_tweet):
     mock_tweet_instance.text = "This is a test tweet"
     mock_tweet_instance.favorite_count = 123
     mock_client.search_tweet.return_value = [mock_tweet_instance]
-    QUERY = "Test query"
-    TWEETS = 1
-    result = await find_tweets(QUERY, TWEETS)
+    QUERY = "Food"
+    TWEETS = 10
+    result = await search_tweets(QUERY, TWEETS)
     assert result != 0
 
 
 @pytest.mark.asyncio
-@patch('twitter_parse.utils.find_tweets')
+@patch('twitter_parse.utils.search_tweets')
 async def test_tweet_get_no_tweets(mock_find_tweets):
     mock_find_tweets.return_value = []
 
