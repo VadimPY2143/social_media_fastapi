@@ -33,7 +33,7 @@ async def test_find_tweets(mock_client, mock_tweet):
     mock_client.search_tweet.return_value = [mock_tweet_instance]
     QUERY = "Food"
     TWEETS = 10
-    result = await search_tweets(QUERY, TWEETS)
+    result = search_tweets(QUERY, TWEETS)
     assert result != 0
 
 

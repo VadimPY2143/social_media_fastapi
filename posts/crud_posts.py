@@ -120,3 +120,4 @@ def post_delete(post_id: int):
 
         else:
             raise HTTPException(status_code=404, detail=f'There is no post with id {post_id}')
+

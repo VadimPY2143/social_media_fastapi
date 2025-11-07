@@ -14,6 +14,7 @@ class UserLogin(BaseModel):
 
 
 class UpdateUser(BaseModel):
+    user_id: int
     new_username: Optional[str] = None
     old_email: EmailStr
     new_email: Optional[EmailStr] = None

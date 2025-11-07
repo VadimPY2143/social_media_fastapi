@@ -3,7 +3,7 @@
 
 ## Functional:
 
-1. CRUD for posts
+1. CRUD for posts, content filtration
 2. CRUD, login and registration for users
 3. Parsing from Twitter with translation of the posts
 

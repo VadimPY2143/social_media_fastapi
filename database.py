@@ -1,6 +1,12 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary, ForeignKey, Text, BigInteger
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, LargeBinary, ForeignKey, Text, BigInteger, DateTime
+from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-engine = create_engine('mysql+pymysql://root:@localhost:3306/Social_media', echo=True)
+load_dotenv()
+
+engine = create_engine(os.getenv('MYSQL'), echo=True)
 metadata = MetaData()
 
 
@@ -34,6 +40,43 @@ twitter_parse_table = Table(
     Column('created_at', String(100), nullable=False),
     Column('tweet_id', BigInteger, nullable=False),
     Column('author_id', BigInteger, nullable=False),
+)
+
+comment_table = Table(
+    'comments',
+    metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('post_id', ForeignKey('posts.id'), nullable=False),
+    Column('user_id', ForeignKey('users.id'), nullable=False),
+    Column('text', String(500), nullable=False),
+    Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
+)
+
+post_likes_table = Table(
+    'post_likes',
+    metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('post_id', ForeignKey('posts.id', ondelete='CASCADE'), nullable=False),
+    Column('user_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
+    Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
+)
+
+comment_likes_table = Table(
+    'comment_likes',
+    metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('comment_id', ForeignKey('comments.id', ondelete='CASCADE'), nullable=False),
+    Column('user_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
+    Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
+)
+
+followers_table = Table(
+    'followers',
+    metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('follower_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
+    Column('following_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
+    Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
 )
 
 metadata.create_all(engine)
