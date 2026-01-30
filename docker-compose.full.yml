@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: social_media
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - socmed_network
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MYSQL: "mysql+pymysql://root:root@mysql:3306/social_media"
+      SECRET_KEY: "your-secret-key-here"
+    depends_on:
+      - mysql
+    networks:
+      - socmed_network
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_API_URL: "http://backend:8000"
+    depends_on:
+      - backend
+    networks:
+      - socmed_network
+
+volumes:
+  mysql_data:
+
+networks:
+  socmed_network:
+    driver: bridge

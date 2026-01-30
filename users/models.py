@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, SecretStr, EmailStr, field_validator
+from pydantic import BaseModel, Field, SecretStr, EmailStr
 from typing import Optional
 
 
@@ -13,10 +13,24 @@ class UserLogin(BaseModel):
     password: SecretStr
 
 
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: Optional[str] = None
+
+
+class UserResponse(BaseModel):
+    id: int
+    username: str
+    email: EmailStr
+    password: str
+
+
 class UpdateUser(BaseModel):
-    user_id: int
     new_username: Optional[str] = None
-    old_email: EmailStr
     new_email: Optional[EmailStr] = None
     old_password: SecretStr
     new_password: Optional[SecretStr] = None

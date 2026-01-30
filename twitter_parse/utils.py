@@ -11,14 +11,12 @@ load_dotenv()
 BEARER = os.getenv('BEARER')
 
 
-
 def translate_message(message: str, language: str) -> str:
     if language:
         translator = Translator(to_lang=language)
         translation = translator.translate(message)
         return translation
     return message
-
 
 
 def search_tweets(query: str, tweets: int = 10):

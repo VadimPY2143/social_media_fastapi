@@ -2,5 +2,4 @@ venv
 .idea
 twitter_parse/config.ini
 twitter_parse/cookies.json
-
 .env

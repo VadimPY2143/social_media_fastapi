@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy import insert, select, update, delete
+from sqlalchemy import insert
 from sqlalchemy.orm import Session
-from database import twitter_parse_table, engine
+from database_files.database import twitter_parse_table, engine
 from .utils import tweet_get
 from .models import Tweet
-import asyncio
 
 router = APIRouter(
     tags=['Twitter'],

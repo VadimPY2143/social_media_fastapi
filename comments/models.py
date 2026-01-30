@@ -2,8 +2,8 @@ from pydantic import BaseModel, Field
 
 
 class CommentCreate(BaseModel):
-    post_id: str = Field(...)
-    user_id: str = Field(...)
+    post_id: int = Field(...)
+    user_id: int = Field(...)
     text: str = Field(..., min_length=1, max_length=500)
 
 

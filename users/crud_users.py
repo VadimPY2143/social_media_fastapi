@@ -1,8 +1,21 @@
-from fastapi import HTTPException, APIRouter, status, Depends
+from datetime import timedelta
+from fastapi import HTTPException, APIRouter, status, Depends, UploadFile, File, Form
+from fastapi.responses import StreamingResponse
 from sqlalchemy import insert, select, update, delete
-from sqlalchemy.orm import Session
-from database import user_table, engine
-from .models import UserCreate, UpdateUser, UserLogin
+from sqlalchemy.ext.asyncio import AsyncSession
+from database_files.database import user_table
+from database_files.db_session import get_session
+from .models import UserCreate, UpdateUser, UserLogin, Token, UserResponse
+from io import BytesIO
+
+
+from auth import (
+    get_password_hash, 
+    verify_password, 
+    create_access_token, 
+    get_current_user,
+    ACCESS_TOKEN_EXPIRE_MINUTES
+)
 
 
 router = APIRouter(
@@ -11,93 +24,206 @@ router = APIRouter(
 )
 
 
-@router.post('/user/create')
-async def register_user(user: UserCreate = Depends()) -> dict:
-    with Session(engine) as session:
-        stmt = insert(user_table).values(
-            username=user.username,
-            email=user.email,
-            password=user.password.get_secret_value()
+@router.post('/user/create', response_model=UserResponse)
+async def register_user(
+    username: str = Form(...),
+    email: str = Form(...),
+    password: str = Form(...),
+    avatar: UploadFile = File(None),
+    session: AsyncSession = Depends(get_session)
+):
+    avatar_data = None
+    stmt = select(user_table).where(user_table.c.email == email)
+    result = await session.execute(stmt)
+    existing_user = result.fetchone()
+
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Email already registered"
         )
-        session.execute(stmt)
-        session.commit()
 
-    return {
-        'username': user.username,
-        'email': user.email,
-        'password': '*' * len(user.password)
-    }
+    if avatar:
+        avatar_data = await avatar.read()
 
+    hashed_password = get_password_hash(password)
+    stmt = insert(user_table).values(
+        username=username,
+        email=email,
+        password=hashed_password,
+        avatar=avatar_data
+    )
 
-@router.post('/user/login')
-def login_user(user: UserLogin = Depends()) -> dict:
-    with Session(engine) as session:
-        stmt = select(user_table).where(user_table.c.email == user.email)
-        result = session.execute(stmt).fetchone()
-        session.close()
-        if result:
-            if user.email == result[2] and user.password.get_secret_value() == result[3]:
-                return {'message': 'Success!'}
-        raise HTTPException(status_code=403, detail='Wrong email or password!')
+    result = await session.execute(stmt)
+    await session.commit()
 
+    user_id = result.lastrowid
 
-@router.get('/user/get')
-async def get_user(user_id: int) -> dict:
-    with Session(engine) as session:
-        stmt = select(user_table).where(user_table.c.id == user_id)
-        result = session.execute(stmt).fetchone()
-        if result:
-            result_dict = {
-                'id': result[0],
-                'username': result[1],
-                'email': result[2],
-                'password': result[3]
-            }
-            return result_dict
-        raise HTTPException(status_code=404, detail=f'There is no user with id {user_id}')
+    return UserResponse(
+        id=user_id,
+        username=username,
+        email=email,
+        password=len(password)*'*',
+    )
 
 
-@router.put('/user/update')
-async def update_user(user_id: int, user_upd: UpdateUser = Depends()) -> dict:
-    with Session(engine) as session:
-        stmt = select(user_table).where(user_table.c.id == user_id)
-        user_data = session.execute(stmt).fetchone()
-        if user_data[2] == user_upd.old_email and user_data[3] == user_upd.old_password.get_secret_value():
-            stmt = update(user_table).where(user_table.c.id == user_id).values(username=user_upd.new_username if user_upd.new_username else user_data[1],
-                                                                               email=user_upd.new_email if user_upd.new_email else user_data[2],
-                                                                               password=user_upd.new_password.get_secret_value() if user_upd.new_password else user_data[3])
-            session.execute(stmt)
-            session.commit()
-            stmt = select(user_table).where(user_table.c.id == user_id)
-            user_data = session.execute(stmt).fetchone()
-
-        else:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Wrong password or email!')
-
-        if user_data:
-            result_dict = {
-             'id': user_data[0],
-             'username': user_data[1],
-             'email': user_data[2],
-             'password': user_data[3],
-            }
-            return result_dict
-        raise HTTPException(status_code=404, detail=f'There is no user with id {user_id}')
-
-
-@router.delete('/user/delete/{user_id}')
-async def delete_user(user_id: int) -> dict:
-    with Session(engine) as session:
-        stmt = select(user_table).where(user_table.c.id == user_id)
-        result = session.execute(stmt).fetchone()
-        if result:
-            delete_stmt = delete(user_table).where(user_table.c.id == user_id)
-            session.execute(delete_stmt)
-            session.commit()
-            return {'message': 'Successfully deleted'}
-
-        raise HTTPException(status_code=404, detail=f'There is no user with id {user_id}')
+@router.post('/user/login', response_model=Token)
+async def login_user(user: UserLogin, session: AsyncSession = Depends(get_session)):
+    stmt = select(user_table).where(user_table.c.email == user.email)
+    result = await session.execute(stmt)
+    db_user = result.fetchone()
+    
+    if not db_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    if not verify_password(user.password.get_secret_value(), db_user[3]):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": user.email}, expires_delta=access_token_expires
+    )
+    
+    return Token(access_token=access_token, token_type="bearer")
 
 
+@router.get('/user/me', response_model=UserResponse)
+async def get_current_user_info(current_user: dict = Depends(get_current_user)):
+    return UserResponse(**current_user)
 
 
+@router.get('/user/{user_id}', response_model=UserResponse)
+async def get_user(user_id: int, session: AsyncSession = Depends(get_session)):
+    stmt = select(user_table).where(user_table.c.id == user_id)
+    result = await session.execute(stmt)
+    db_user = result.fetchone()
+    
+    if not db_user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f'There is no user with id {user_id}'
+        )
+    
+    return UserResponse(
+        id=db_user[0],
+        username=db_user[1],
+        email=db_user[2],
+        password=len(db_user[3]) * '*'
+    )
+
+
+@router.put('/user/update', response_model=UserResponse)
+async def update_user(
+    user_upd: UpdateUser = Depends(),
+    current_user: dict = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session)
+):
+    user_id = current_user['id']
+    
+    stmt = select(user_table).where(user_table.c.id == user_id)
+    result = await session.execute(stmt)
+    user_data = result.fetchone()
+    
+    if not user_data:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail='User not found'
+        )
+    
+    if not verify_password(user_upd.old_password.get_secret_value(), user_data[3]):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail='Wrong password!'
+        )
+    
+    new_password_hash = None
+    if user_upd.new_password:
+        new_password_hash = get_password_hash(user_upd.new_password.get_secret_value())
+    
+    stmt = update(user_table).where(user_table.c.id == user_id).values(
+        username=user_upd.new_username if user_upd.new_username else user_data[1],
+        email=user_upd.new_email if user_upd.new_email else user_data[2],
+        password=new_password_hash if new_password_hash else user_data[3]
+    )
+    await session.execute(stmt)
+    await session.commit()
+    
+    stmt = select(user_table).where(user_table.c.id == user_id)
+    result = await session.execute(stmt)
+    updated_user = result.fetchone()
+    
+    return UserResponse(
+        id=updated_user[0],
+        username=updated_user[1],
+        email=updated_user[2],
+        password=len(updated_user[3])*'*'
+    )
+
+
+@router.delete('/user/delete')
+async def delete_user(current_user: dict = Depends(get_current_user), session: AsyncSession = Depends(get_session)) -> dict:
+    user_id = current_user['id']
+    
+    delete_stmt = delete(user_table).where(user_table.c.id == user_id)
+    await session.execute(delete_stmt)
+    await session.commit()
+    
+    return {'message': 'User successfully deleted'}
+
+
+@router.get('/user/{user_id}/avatar')
+async def get_user_avatar(user_id: int, session: AsyncSession = Depends(get_session)):
+    stmt = select(user_table.c.avatar).where(user_table.c.id == user_id)
+    result = await session.execute(stmt)
+    avatar = result.scalar_one_or_none()
+    
+    if avatar and avatar != b"":
+        return StreamingResponse(BytesIO(avatar), media_type="image/jpeg")
+    
+    raise HTTPException(status_code=404, detail='No avatar found for this user')
+
+
+@router.put('/user/avatar')
+async def update_user_avatar(
+    avatar: UploadFile = File(...),
+    current_user: dict = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session)
+):
+    user_id = current_user['id']
+    
+    if not avatar:
+        raise HTTPException(status_code=400, detail='Avatar file is required')
+    
+    try:
+        avatar_data = await avatar.read()
+        
+        stmt = update(user_table).where(user_table.c.id == user_id).values(
+            avatar=avatar_data
+        )
+        await session.execute(stmt)
+        await session.commit()
+        
+        return {'message': 'Avatar updated successfully'}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f'Failed to upload avatar: {str(e)}')
+
+
+@router.delete('/user/avatar')
+async def delete_user_avatar(current_user: dict = Depends(get_current_user), session: AsyncSession = Depends(get_session)) -> dict:
+    user_id = current_user['id']
+
+    stmt = update(user_table).where(user_table.c.id == user_id).values(
+        avatar=None
+    )
+    await session.execute(stmt)
+    await session.commit()
+
+    return {'message': 'Avatar deleted successfully'}
