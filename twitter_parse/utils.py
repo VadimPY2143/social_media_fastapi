@@ -8,7 +8,7 @@ import requests
 
 load_dotenv()
 
-BEARER = os.getenv('BEARER')
+BEARER = os.getenv('TWITTER_BEARER')
 
 
 def translate_message(message: str, language: str) -> str:
