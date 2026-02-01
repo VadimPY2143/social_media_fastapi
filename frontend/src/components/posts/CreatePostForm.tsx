@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuthStore } from '../../store/authStore';
 import { useNotificationStore } from '../../store/notificationStore';
 import { usePostStore } from '../../store/postStore';
-import { Button, Textarea, Input, Card, Avatar } from '../common';
+import { PremiumButton, Textarea, Input, Card, Avatar } from '../common';
 
 interface CreatePostFormProps {
   onPostCreated?: () => void;
@@ -61,9 +61,15 @@ const CreatePostForm: React.FC<CreatePostFormProps> = ({ onPostCreated }) => {
             </label>
             {file && <span className="text-sm text-gray-600">{file.name}</span>}
           </div>
-          <Button type="submit" loading={loading} className="w-full">
-            Post
-          </Button>
+          <PremiumButton 
+           type="submit" 
+           loading={loading} 
+           variant="gradient"
+           size="lg"
+           className="w-full"
+          >
+           {loading ? 'Posting...' : 'Post'}
+          </PremiumButton>
         </form>
       </div>
     </Card>

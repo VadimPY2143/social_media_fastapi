@@ -9,7 +9,7 @@ from io import BytesIO
 from content_filter import check_post_async, check_post_update_async, summarize_content_async
 import json
 from redis import asyncio as redis
-
+from redis_client import redis_client
 
 router = APIRouter(
     tags=['Posts'],
@@ -120,115 +120,136 @@ async def read_all_posts(
     session: AsyncSession = Depends(get_session),
 ) -> dict:
     cache_key = "fastapi-cache:posts:posts:all"
-    redis_client = None
-    
+
     try:
-        redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=True)
         cached_data = await redis_client.get(cache_key)
         if cached_data:
             print("✓ Cache hit")
-            await redis_client.close()
             return json.loads(cached_data)
     except Exception as e:
-        print(f"Cache get error: {e}")
-    finally:
-        if redis_client:
-            await redis_client.close()
+        print(f"✗ Cache get error: {e}")
 
     print("✗ Cache miss, querying database")
 
     stmt = (
-        select(post_table, user_table.c.username)
+        select(
+            post_table.c.id,
+            post_table.c.post_name,
+            post_table.c.author,
+            post_table.c.text,
+            post_table.c.picture,
+            user_table.c.username,
+        )
         .join(user_table, post_table.c.author == user_table.c.id)
         .where(post_table.c.is_approved == 1)
     )
+
     result = await session.execute(stmt)
 
     result_dict: dict[int, dict] = {}
 
     for row in result:
-        post = {
-            "id": row[0],
-            "post_name": row[1],
-            "author_id": row[2],
-            "text": row[3],
-            "picture": row[4] is not None,
-            "author_username": row[6],
+        result_dict[row.id] = {
+            "id": row.id,
+            "post_name": row.post_name,
+            "author_id": row.author,
+            "text": row.text,
+            "picture": row.picture is not None,
+            "author_username": row.username,
         }
-
-        result_dict[row[0]] = post
 
     if not result_dict:
         raise HTTPException(status_code=404, detail="There are no posts")
 
     try:
-        redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=True)
         await redis_client.set(cache_key, json.dumps(result_dict), ex=CACHE_TTL)
         print("✓ Result cached")
-        await redis_client.close()
     except Exception as e:
         print(f"Cache set error: {e}")
 
     return result_dict
 
 
-@router.put('/post/update/{post_id}')
+
+@router.put("/post/update/{post_id}")
 async def post_update(
     post_id: int,
     post_name: str = Form(...),
     text: str = Form(...),
     session: AsyncSession = Depends(get_session),
-    background_tasks: BackgroundTasks = BackgroundTasks()
+    background_tasks: BackgroundTasks = BackgroundTasks(),
 ) -> dict:
 
-    stmt_get_old = select(post_table).where(post_table.c.id == post_id)
-    result_old = await session.execute(stmt_get_old)
-    old_post = result_old.fetchone()
-    
-    if not old_post:
-        raise HTTPException(status_code=404, detail=f'There is no post with id {post_id}')
-    
-    old_name = old_post[1]
-    old_text = old_post[3]
-
-    stmt = update(post_table).where(post_table.c.id == post_id).values(
-        post_name=post_name, 
-        text=text,
-        is_approved=1
+    stmt_old = (
+        select(
+            post_table.c.id,
+            post_table.c.post_name,
+            post_table.c.text,
+        )
+        .where(post_table.c.id == post_id)
     )
-    await session.execute(stmt)
+    result_old = await session.execute(stmt_old)
+    old_post = result_old.one_or_none()
+
+    if old_post is None:
+        raise HTTPException(status_code=404, detail=f"There is no post with id {post_id}")
+
+    old_name = old_post.post_name
+    old_text = old_post.text
+
+    stmt_update = (
+        update(post_table)
+        .where(post_table.c.id == post_id)
+        .values(
+            post_name=post_name,
+            text=text,
+            is_approved=1,
+        )
+    )
+    await session.execute(stmt_update)
     await session.commit()
 
-    stmt = select(post_table, user_table.c.username).join(
-        user_table, post_table.c.author == user_table.c.id
-    ).where(post_table.c.id == post_id)
-    result = await session.execute(stmt)
-    row = result.fetchone()
+    stmt_get = (
+        select(
+            post_table.c.id,
+            post_table.c.post_name,
+            post_table.c.author,
+            post_table.c.text,
+            post_table.c.picture,
+            user_table.c.username,
+        )
+        .join(user_table, post_table.c.author == user_table.c.id)
+        .where(post_table.c.id == post_id)
+    )
 
-    if row:
-        result_dict = {
-            'id': row[0],
-            'post_name': row[1],
-            'author': row[2],
-            'author_id': row[2],
-            'text': row[3],
-            'picture': row[4] is not None,
-            'author_username': row[6],
-        }
-        
-        try:
-            redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=False)
-            await redis_client.delete("fastapi-cache:posts:posts:all")
-            await redis_client.close()
-            print("✓ Cache cleared after post update")
-        except Exception as e:
-            print(f"✗ Cache clear error: {e}")
-        
-        background_tasks.add_task(check_post_update_async, post_id, post_name, text, old_name, old_text)
-        print(f"✓ Background AI check queued for post {row[0]} (with rollback support)")
-        
-        return result_dict
-    raise HTTPException(status_code=404, detail=f'There is no post with id {post_id}')
+    result = await session.execute(stmt_get)
+    row = result.one()
+
+    post = {
+        "id": row.id,
+        "post_name": row.post_name,
+        "author_id": row.author,
+        "text": row.text,
+        "picture": row.picture is not None,
+        "author_username": row.username,
+    }
+
+    try:
+        await redis_client.delete("fastapi-cache:posts:posts:all")
+    except Exception as e:
+        print(f"Cache clear error: {e}")
+
+    background_tasks.add_task(
+        check_post_update_async,
+        post_id,
+        post_name,
+        text,
+        old_name,
+        old_text,
+    )
+
+    return post
+
 
 
 @router.delete('/post/delete/{post_id}')
@@ -239,9 +260,7 @@ async def post_delete(post_id: int, session: AsyncSession = Depends(get_session)
     
     if result.rowcount > 0:
         try:
-            redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=False)
             await redis_client.delete("fastapi-cache:posts:posts:all")
-            await redis_client.close()
             print("✓ Cache cleared after post delete")
         except Exception as e:
             print(f"✗ Cache clear error: {e}")

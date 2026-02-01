@@ -4,7 +4,7 @@ import { useAuthStore } from '../store/authStore';
 import { useNotificationStore } from '../store/notificationStore';
 import { apiClient } from '../api/client';
 import Layout from '../components/layout/Layout';
-import { LoadingSpinner, Button } from '../components/common';
+import { LoadingSpinner, PremiumButton } from '../components/common';
 import CreatePostForm from '../components/posts/CreatePostForm';
 import PostCard from '../components/posts/PostCard';
 
@@ -62,17 +62,17 @@ const Feed: React.FC = () => {
         </div>
 
         <div className="hidden lg:block">
-          <div className="bg-neutral-900/50 backdrop-blur-xl rounded-2xl p-6 border border-purple-500/20 sticky top-24 shadow-2xl hover:border-purple-500/40 transition-all duration-300">
+          <div className="bg-neutral-900/60 backdrop-blur-xl rounded-2xl p-6 border border-purple-500/30 sticky top-24 shadow-2xl hover:border-purple-500/50 transition-all duration-300">
             <h3 className="font-black text-xl mb-6 text-white uppercase tracking-wide">Trends</h3>
             {user && (
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-4 bg-neutral-800/50 rounded-xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-200">
-                  <div>
-                    <p className="font-semibold text-white">John Doe</p>
-                    <p className="text-xs text-neutral-300 mt-1">@johndoe</p>
-                  </div>
-                  <Button size="sm">Follow</Button>
-                </div>
+                <div className="flex items-center justify-between p-4 bg-neutral-800/60 rounded-xl border border-purple-500/30 hover:border-purple-500/50 transition-all duration-200">
+                   <div>
+                     <p className="font-semibold text-white">John Doe</p>
+                     <p className="text-xs text-white/70 mt-1">@johndoe</p>
+                   </div>
+                   <PremiumButton size="sm" variant="gradient">Follow</PremiumButton>
+                 </div>
               </div>
             )}
           </div>

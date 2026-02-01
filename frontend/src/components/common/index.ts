@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as PremiumButton } from './PremiumButton';
 export { default as Input } from './Input';
 export { default as Textarea } from './Textarea';
 export { default as Card } from './Card';
@@ -7,3 +8,6 @@ export { default as AvatarUpload } from './AvatarUpload';
 export { default as Modal } from './Modal';
 export { default as LoadingSpinner } from './LoadingSpinner';
 export { default as Notification } from './Notification';
+export { default as SpotlightCard } from './SpotlightCard';
+export { default as GradientOrb } from './GradientOrb';
+export { default as AnimatedText } from './AnimatedText';

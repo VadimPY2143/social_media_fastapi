@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { useNotificationStore } from '../store/notificationStore';
-import { Button, Input, Card, AvatarUpload } from '../components/common';
+import { PremiumButton, Input, Card, AvatarUpload } from '../components/common';
+import { DarkVeil } from '../components/backgrounds';
 import { getErrorMessage } from '../utils/helpers';
 import { apiClient } from '../api/client';
 
@@ -47,17 +48,19 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-950 via-purple-950 to-neutral-950 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
-      </div>
-      <Card className="w-full max-w-md">
-        <h1 className="text-4xl font-black mb-2 text-center bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">Join Us</h1>
-        <p className="text-center text-white text-sm mb-8">Create your account</p>
+    <div className="min-h-screen flex items-center justify-center bg-neutral-950 relative overflow-hidden">
+      <DarkVeil
+        speed={1.2}
+        warpAmount={0.25}
+      />
+      
+      <Card className="w-full max-w-md relative z-10">
+        <h1 className="text-4xl font-black mb-2 text-center bg-gradient-to-r from-purple-300 via-pink-300 to-purple-300 bg-clip-text text-transparent">Join MoodShare</h1>
+        <p className="text-center text-white/70 text-sm mb-8">Create your account and start sharing</p>
         
-        {errors.form && <div className="mb-5 p-4 bg-pink-950/40 border border-pink-500/30 text-pink-200 rounded-xl text-sm font-medium">{errors.form}</div>}
+        {errors.form && <div className="mb-5 p-4 bg-red-950/40 border border-red-500/30 text-red-200 rounded-xl text-sm font-medium">{errors.form}</div>}
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <AvatarUpload
             username={username}
             onAvatarSelected={setAvatar}
@@ -98,14 +101,20 @@ const Register: React.FC = () => {
             error={errors.confirmPassword}
             required
           />
-          <Button type="submit" loading={isLoading || authLoading} className="w-full">
-            Register
-          </Button>
-        </form>
+          <PremiumButton 
+           type="submit" 
+           loading={isLoading || authLoading} 
+           variant="gradient"
+           size="lg"
+           className="w-full"
+          >
+           {isLoading || authLoading ? 'Creating Account...' : 'Create Account'}
+          </PremiumButton>
+          </form>
 
-        <p className="mt-4 text-center text-gray-600">
-          Already have an account? <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
-        </p>
+          <p className="mt-6 text-center text-white/60 text-sm">
+          Already have an account? <Link to="/login" className="text-purple-400 hover:text-purple-300 font-semibold transition-colors">Sign in</Link>
+          </p>
       </Card>
     </div>
   );

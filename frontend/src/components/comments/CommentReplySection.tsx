@@ -54,10 +54,10 @@ const CommentReplySection: React.FC<CommentReplySectionProps> = ({ commentId, po
   };
 
   return (
-    <div className="ml-8 mt-3 border-l-2 border-gray-200 pl-3">
+    <div className="ml-8 mt-3 border-l-2 border-white/20 pl-3">
       <button
         onClick={() => setShowReplies(!showReplies)}
-        className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+        className="text-xs text-blue-400 hover:text-blue-300 font-medium"
       >
         {showReplies ? 'Hide' : 'Show'} replies ({replies.length})
       </button>
@@ -65,15 +65,15 @@ const CommentReplySection: React.FC<CommentReplySectionProps> = ({ commentId, po
       {showReplies && (
         <div className="mt-3 space-y-2">
           {replies.map((reply) => (
-            <div key={reply.id} className="bg-gray-50 p-2 rounded text-sm">
+            <div key={reply.id} className="bg-neutral-800/40 p-2 rounded text-sm">
               <Link 
                 to={`/profile/${reply.user_id}`}
-                className="font-semibold text-gray-900 hover:text-blue-600 cursor-pointer"
+                className="font-semibold text-white hover:text-blue-400 cursor-pointer"
               >
                 {reply.user}
               </Link>
-              <p className="text-gray-700">{reply.text}</p>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-white/90">{reply.text}</p>
+              <p className="text-xs text-white/60 mt-1">
                 {new Date(reply.created_at).toLocaleDateString()}
               </p>
             </div>
@@ -86,7 +86,7 @@ const CommentReplySection: React.FC<CommentReplySectionProps> = ({ commentId, po
                 placeholder="Write a reply..."
                 value={replyText}
                 onChange={(e) => setReplyText(e.target.value)}
-                className="flex-1 px-2 py-1 border border-gray-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-3 border border-purple-500/20 hover:border-purple-500/40 bg-neutral-800/50 rounded-xl text-white text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 backdrop-blur-sm"
               />
               <Button
                 size="sm"

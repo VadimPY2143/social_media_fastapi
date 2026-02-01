@@ -10,6 +10,7 @@ from fastapi_cache import FastAPICache
 from fastapi_cache.backends.redis import RedisBackend
 from redis import asyncio as redis
 from database_files.database import init_db
+from redis_client import redis_client
 
 app = FastAPI()
 
@@ -25,12 +26,20 @@ app.add_middleware(
 async def startup():
     try:
         await init_db()
-        redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=False)
         await redis_client.ping()
         FastAPICache.init(RedisBackend(redis_client), prefix="fastapi-cache")
         print("Redis cache initialized successfully")
     except Exception as e:
-        print(f"Failed to initialize: {e}")
+        print(f"Failed to initialize Redis cache: {e}")
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    try:
+        await redis_client.close()
+        print("Redis cache closed successfully")
+    except Exception as e:
+        print(f"Failed to close Redis cache: {e}")
 
 app.include_router(user_router)
 app.include_router(post_router)

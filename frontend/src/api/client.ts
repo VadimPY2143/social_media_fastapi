@@ -342,13 +342,11 @@ class ApiClient {
     }
   }
 
-  // Summarize endpoint
   async summarizePost(postId: number) {
     const response = await this.client.get(`/posts/post/summary/${postId}`);
     return response.data;
   }
 
-  // Twitter endpoints
   async searchTweets(query: string, tweets: number = 10, lang: string = 'en') {
     const response = await this.client.get('/twitter/tweet/get', {
       params: { query, tweets, lang },

@@ -4,15 +4,15 @@ A modern React/TypeScript frontend for the Social Media FastAPI application.
 
 ## Features
 
-- ✅ User Authentication (Login/Register)
-- ✅ Create, Read, Update, Delete Posts
-- ✅ Like Posts & Comments
-- ✅ Add Comments to Posts
-- ✅ User Profiles & Follow System
-- ✅ Twitter Integration & Search
-- ✅ Responsive Design with Tailwind CSS
-- ✅ State Management with Zustand
-- ✅ Type-safe with TypeScript
+- User Authentication (Login/Register)
+-  Create, Read, Update, Delete Posts
+-  Like Posts & Comments
+-  Add Comments to Posts
+-  User Profiles & Follow System
+-  Twitter Integration & Search
+-  Responsive Design with Tailwind CSS
+-  State Management with Zustand
+-  Type-safe with TypeScript
 
 ## Setup
 

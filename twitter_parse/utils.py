@@ -31,6 +31,7 @@ def search_tweets(query: str, tweets: int = 10):
     response = requests.get(url, headers=headers, params=params)
     if response.status_code != 200:
         raise Exception(f"Error: {response.status_code}, {response.text}")
+    print(response.json())
     return response.json()
 
 

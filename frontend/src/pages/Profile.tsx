@@ -6,7 +6,7 @@ import { apiClient } from '../api/client';
 import { useCallback } from 'react';
 import Layout from '../components/layout/Layout';
 import { User, FollowStats, Post } from '../types';
-import { Button, Avatar, LoadingSpinner, Card, AvatarUpload } from '../components/common';
+import { PremiumButton, Avatar, LoadingSpinner, Card, AvatarUpload } from '../components/common';
 import PostCard from '../components/posts/PostCard';
 
 const Profile: React.FC = () => {
@@ -134,42 +134,47 @@ const Profile: React.FC = () => {
                 ) : (
                   <Avatar username={profileUser.username} userId={profileUser.id} size="lg" />
                 )}
-                {isOwnProfile && (
-                  <Button onClick={handleDeleteAvatar} variant="danger" size="sm" className="mt-3">
-                    Delete Avatar
-                  </Button>
-                )}
+                {isOwnProfile && profileUser.user_avatar && (
+                   <PremiumButton onClick={handleDeleteAvatar} variant="secondary" size="sm" className="mt-3">
+                     Delete Avatar
+                   </PremiumButton>
+                 )}
               </div>
               <div className="flex-1">
-                <h1 className="text-3xl font-bold">{profileUser.username}</h1>
-                <p className="text-gray-600 mt-1">@{profileUser.username.toLowerCase()}</p>
+                <h1 className="text-3xl font-bold text-white">{profileUser.username}</h1>
+                <p className="text-white/70 mt-1">@{profileUser.username.toLowerCase()}</p>
                 <div className="flex gap-6 mt-4">
                   <div>
-                    <p className="text-2xl font-bold">{posts.length}</p>
-                    <p className="text-gray-600 text-sm">Posts</p>
+                    <p className="text-2xl font-bold text-white">{posts.length}</p>
+                    <p className="text-white/70 text-sm">Posts</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold">{stats?.followers || 0}</p>
-                    <p className="text-gray-600 text-sm">Followers</p>
+                    <p className="text-2xl font-bold text-white">{stats?.followers || 0}</p>
+                    <p className="text-white/70 text-sm">Followers</p>
                   </div>
                   <div>
-                    <p className="text-2xl font-bold">{stats?.following || 0}</p>
-                    <p className="text-gray-600 text-sm">Following</p>
+                    <p className="text-2xl font-bold text-white">{stats?.following || 0}</p>
+                    <p className="text-white/70 text-sm">Following</p>
                   </div>
                 </div>
                 {!isOwnProfile && (
-                   <Button onClick={handleFollow} variant={isFollowing ? 'secondary' : 'primary'} className="mt-4">
-                     {isFollowing ? 'Following' : 'Follow'}
-                   </Button>
-                )}
+                    <PremiumButton 
+                      onClick={handleFollow} 
+                      variant={isFollowing ? 'secondary' : 'gradient'} 
+                      size="md"
+                      className="mt-4"
+                    >
+                       {isFollowing ? 'Following' : 'Follow'}
+                     </PremiumButton>
+                  )}
               </div>
             </div>
           </Card>
 
           <div>
-            <h2 className="text-2xl font-bold mb-4">Posts</h2>
+            <h2 className="text-2xl font-bold mb-4 text-white">Posts</h2>
             {posts.length === 0 ? (
-              <p className="text-gray-500">No posts yet</p>
+              <p className="text-white/60">No posts yet</p>
             ) : (
               posts.map(post => (
                 <PostCard 
@@ -186,8 +191,8 @@ const Profile: React.FC = () => {
         <div>
           {!isOwnProfile && (
             <Card className="mb-6">
-              <h3 className="font-semibold mb-3">User Info</h3>
-              <p className="text-sm text-gray-600 mb-4">{profileUser.email}</p>
+              <h3 className="font-semibold mb-3 text-white">User Info</h3>
+              <p className="text-sm text-white/70 mb-4">{profileUser.email}</p>
             </Card>
           )}
         </div>

@@ -33,7 +33,7 @@ const Explore: React.FC = () => {
   return (
     <Layout>
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">Explore Twitter</h1>
+        <h1 className="text-3xl font-bold mb-6 text-white">Explore Twitter</h1>
         
         <form onSubmit={handleSearch} className="flex gap-2 mb-6">
           <Input
@@ -50,9 +50,9 @@ const Explore: React.FC = () => {
         <div className="space-y-4">
           {Object.values(tweets).map((tweet, idx) => (
             <Card key={idx}>
-              <p className="text-sm text-gray-500 mb-2">Tweet #{tweet.post_id}</p>
-              <p className="text-gray-900 mb-3">{tweet.tweet_text}</p>
-              <div className="flex gap-6 text-sm text-gray-600">
+              <p className="text-sm text-white/70 mb-2">Tweet #{tweet.post_id}</p>
+              <p className="text-white mb-3">{tweet.tweet_text}</p>
+              <div className="flex gap-6 text-sm text-white/70">
                 <span>❤️ {tweet.likes}</span>
                 <span>📅 {tweet.created_at}</span>
               </div>
@@ -62,7 +62,7 @@ const Explore: React.FC = () => {
 
         {!loading && Object.keys(tweets).length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500">Search for tweets to explore</p>
+            <p className="text-white/60">Search for tweets to explore</p>
           </div>
         )}
       </div>

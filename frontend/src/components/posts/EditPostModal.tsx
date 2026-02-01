@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Post } from '../../types';
 import { apiClient } from '../../api/client';
 import { useNotificationStore } from '../../store/notificationStore';
-import { Button } from '../common';
+import { PremiumButton } from '../common';
 
 interface EditPostModalProps {
   post: Post;
@@ -16,6 +17,11 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, isOpen, onClose, on
   const [text, setText] = useState(post.text);
   const [isLoading, setIsLoading] = useState(false);
   const { showNotification } = useNotificationStore();
+
+  React.useEffect(() => {
+    setPostName(post.post_name);
+    setText(post.text);
+  }, [post, isOpen]);
 
   if (!isOpen) return null;
 
@@ -48,14 +54,14 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, isOpen, onClose, on
     }
   };
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full mx-4">
-        <h2 className="text-xl font-bold mb-4 text-gray-900">Edit Post</h2>
+  const modalContent = (
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999] p-4 overflow-y-auto">
+      <div className="bg-gradient-to-br from-neutral-900/95 to-neutral-950/95 backdrop-blur-xl rounded-2xl shadow-2xl shadow-purple-500/40 p-8 max-w-md w-full my-auto border border-purple-500/30">
+        <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">Edit Post</h2>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-white/90 mb-2">
               Post Title
             </label>
             <input
@@ -63,15 +69,15 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, isOpen, onClose, on
               value={postName}
               onChange={(e) => setPostName(e.target.value)}
               maxLength={20}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2.5 bg-white/5 border border-purple-500/30 hover:border-purple-500/50 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200"
               placeholder="Enter post title"
               required
             />
-            <p className="text-xs text-gray-500 mt-1">{postName.length}/20</p>
+            <p className="text-xs text-white/60 mt-1">{postName.length}/20</p>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-white/90 mb-2">
               Post Content
             </label>
             <textarea
@@ -79,33 +85,38 @@ const EditPostModal: React.FC<EditPostModalProps> = ({ post, isOpen, onClose, on
               onChange={(e) => setText(e.target.value)}
               maxLength={100}
               rows={4}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full px-4 py-2.5 bg-white/5 border border-purple-500/30 hover:border-purple-500/50 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 resize-none"
               placeholder="Enter post content"
               required
             />
-            <p className="text-xs text-gray-500 mt-1">{text.length}/100</p>
+            <p className="text-xs text-white/60 mt-1">{text.length}/100</p>
           </div>
 
           <div className="flex gap-3 justify-end pt-4">
-            <Button
+            <PremiumButton
               type="button"
               variant="ghost"
+              size="md"
               onClick={onClose}
               disabled={isLoading}
             >
               Cancel
-            </Button>
-            <Button
+            </PremiumButton>
+            <PremiumButton
               type="submit"
+              variant="gradient"
+              size="md"
               disabled={isLoading}
             >
               {isLoading ? 'Saving...' : 'Save Changes'}
-            </Button>
+            </PremiumButton>
           </div>
         </form>
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 };
 
 export default EditPostModal;

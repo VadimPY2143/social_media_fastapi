@@ -5,7 +5,7 @@ import { apiClient } from '../../api/client';
 import { useAuthStore } from '../../store/authStore';
 import { useNotificationStore } from '../../store/notificationStore';
 import { formatDate } from '../../utils/helpers';
-import { Card, Button, Avatar } from '../common';
+import { Card, Avatar, PremiumButton } from '../common';
 import { CommentReplySection, CommentLikeButton } from '../comments';
 import EditPostModal from './EditPostModal';
 
@@ -124,22 +124,22 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete, onEdit }) => {
             <div>
               <Link 
                 to={`/profile/${post.author_id}`}
-                className="font-semibold text-gray-900 hover:text-blue-600 cursor-pointer"
+                className="font-semibold text-white hover:text-blue-400 cursor-pointer"
               >
                 {post.author_username}
               </Link>
-              <p className="text-sm text-gray-500">{formatDate(new Date().toISOString())}</p>
+              <p className="text-sm text-white/60">{formatDate(new Date().toISOString())}</p>
             </div>
             {canEdit && (
               <div className="flex gap-2">
-                <Button size="sm" variant="ghost" onClick={handleEditClick}>Edit</Button>
-                <Button size="sm" variant="danger" onClick={handleDelete}>Delete</Button>
+                <PremiumButton size="sm" variant="ghost" onClick={handleEditClick}>Edit</PremiumButton>
+                <PremiumButton size="sm" variant="secondary" onClick={handleDelete}>Delete</PremiumButton>
               </div>
             )}
           </div>
           
-          <h2 className="mt-3 text-lg font-semibold text-gray-900">{currentPost.post_name}</h2>
-          <p className="mt-2 text-gray-700">{summarizedText ? summarizedText : currentPost.text}</p>
+          <h2 className="mt-3 text-lg font-semibold text-white">{currentPost.post_name}</h2>
+          <p className="mt-2 text-white/90">{summarizedText ? summarizedText : currentPost.text}</p>
           {shouldShowSummarizeBtn && (
             <button
               onClick={handleSummarize}
@@ -161,14 +161,14 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete, onEdit }) => {
             </div>
           )}
 
-          <div className="mt-4 flex items-center gap-6 text-gray-600 text-sm">
-            <button onClick={handleLike} className={`flex items-center gap-1 hover:text-blue-600 ${isLiked ? 'text-blue-600' : ''}`}>
+          <div className="mt-4 flex items-center gap-6 text-white/70 text-sm">
+            <button onClick={handleLike} className={`flex items-center gap-1 hover:text-blue-400 ${isLiked ? 'text-blue-400' : ''}`}>
               ♥ {likesCount}
             </button>
-            <button onClick={() => setShowComments(!showComments)} className="flex items-center gap-1 hover:text-blue-600">
+            <button onClick={() => setShowComments(!showComments)} className="flex items-center gap-1 hover:text-blue-400">
               💬 {commentsCount}
             </button>
-            <button className="flex items-center gap-1 hover:text-blue-600">
+            <button className="flex items-center gap-1 hover:text-blue-400">
               ↗ Share
             </button>
           </div>
@@ -218,28 +218,28 @@ const CommentSection: React.FC<{postId: number; comments: Comment[]; onRefresh: 
   };
 
   return (
-    <div className="mt-4 border-t pt-4">
+    <div className="mt-4 border-t border-white/20 pt-4">
       <div className="space-y-3 mb-3 max-h-48 overflow-y-auto">
         {comments.map(c => (
           <div key={c.id}>
-            <div className="bg-gray-50 p-3 rounded">
+            <div className="bg-neutral-800/40 p-3 rounded">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <Link 
                     to={`/profile/${c.user_id}`}
-                    className="font-sm font-semibold text-gray-900 hover:text-blue-600 cursor-pointer"
+                    className="font-sm font-semibold text-white hover:text-blue-400 cursor-pointer"
                   >
                     {c.user}
                   </Link>
-                  <p className="text-sm text-gray-700">{c.text}</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-sm text-white/90">{c.text}</p>
+                  <p className="text-xs text-white/60 mt-1">
                     {new Date(c.created_at).toLocaleDateString()}
                   </p>
                 </div>
                 {user?.id === c.user_id && (
                   <button
                     onClick={() => handleDeleteComment(c.id)}
-                    className="text-xs text-red-600 hover:text-red-800 ml-2"
+                    className="text-xs text-red-400 hover:text-red-300 ml-2"
                   >
                     Delete
                   </button>
@@ -260,9 +260,9 @@ const CommentSection: React.FC<{postId: number; comments: Comment[]; onRefresh: 
             placeholder="Add a comment..."
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-4 py-3 border border-purple-500/20 hover:border-purple-500/40 bg-neutral-800/50 rounded-xl text-white text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 backdrop-blur-sm"
           />
-          <Button size="sm" onClick={handleAddComment}>Post</Button>
+          <PremiumButton size="sm" onClick={handleAddComment}>Post</PremiumButton>
         </div>
       )}
     </div>

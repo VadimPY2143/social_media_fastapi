@@ -10,3 +10,4 @@ class CommentCreate(BaseModel):
 class CommentUpdate(BaseModel):
     id: int = Field(...)
     text: str = Field(..., min_length=1, max_length=500)
+
