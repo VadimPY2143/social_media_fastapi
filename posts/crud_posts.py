@@ -6,15 +6,18 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from database_files.database import post_table, user_table
 from database_files.db_session import get_session
 from io import BytesIO
-from content_filter import check_post_async, check_post_update_async, summarize_content_async
 import json
-from redis import asyncio as redis
+import asyncio
 from redis_client import redis_client
+from logger import logger
+from .rabbit_producer import router as rabbit_router
+
 
 router = APIRouter(
     tags=['Posts'],
     prefix='/posts'
 )
+
 
 CACHE_NAMESPACE = "posts"
 CACHE_TTL = 120
@@ -27,7 +30,6 @@ async def create_post(
     author_id: int = Path(..., ge=1),
     file: UploadFile = File(None),
     session: AsyncSession = Depends(get_session),
-    background_tasks: BackgroundTasks = BackgroundTasks()
 ) -> dict:
     picture_data = None
 
@@ -59,15 +61,21 @@ async def create_post(
             raise HTTPException(status_code=500, detail="Failed to obtain new post id")
 
         try:
-            redis_client = redis.from_url("redis://localhost:6379/0", decode_responses=False)
             await redis_client.delete("fastapi-cache:posts:posts:all")
-            await redis_client.close()
-            print("✓ Cache cleared after post creation")
+            logger.info("Cache cleared after post creation")
         except Exception as e:
-            print(f"✗ Cache clear error: {e}")
+            logger.error(f"Cache clear error: {e}")
 
-        background_tasks.add_task(check_post_async, new_post_id, post_name, text)
-        print(f"✓ Background AI check queued for post {new_post_id}")
+        await rabbit_router.broker.publish(
+            {
+                "post_id": new_post_id,
+                "post_name": post_name,
+                "text": text
+            },
+            "ai.moderation.post_create"
+        )
+
+        logger.info(f"Background AI check queued for post {new_post_id}")
 
         return {
             'id': new_post_id,
@@ -124,12 +132,12 @@ async def read_all_posts(
     try:
         cached_data = await redis_client.get(cache_key)
         if cached_data:
-            print("✓ Cache hit")
+            logger.debug("Cache hit")
             return json.loads(cached_data)
     except Exception as e:
-        print(f"✗ Cache get error: {e}")
+        logger.error(f"Cache get error: {e}")
 
-    print("✗ Cache miss, querying database")
+    logger.debug("Cache miss, querying database")
 
     stmt = (
         select(
@@ -163,9 +171,9 @@ async def read_all_posts(
 
     try:
         await redis_client.set(cache_key, json.dumps(result_dict), ex=CACHE_TTL)
-        print("✓ Result cached")
+        logger.debug("Result cached")
     except Exception as e:
-        print(f"Cache set error: {e}")
+        logger.error(f"Cache set error: {e}")
 
     return result_dict
 
@@ -177,7 +185,6 @@ async def post_update(
     post_name: str = Form(...),
     text: str = Form(...),
     session: AsyncSession = Depends(get_session),
-    background_tasks: BackgroundTasks = BackgroundTasks(),
 ) -> dict:
 
     stmt_old = (
@@ -237,15 +244,17 @@ async def post_update(
     try:
         await redis_client.delete("fastapi-cache:posts:posts:all")
     except Exception as e:
-        print(f"Cache clear error: {e}")
+        logger.error(f"Cache clear error: {e}")
 
-    background_tasks.add_task(
-        check_post_update_async,
-        post_id,
-        post_name,
-        text,
-        old_name,
-        old_text,
+    await rabbit_router.broker.publish(
+        {
+            "post_id": post_id,
+            "old_name": old_name,
+            "old_text": old_text,
+            "post_name": post_name,
+            "text": text,
+        },
+        "ai.moderation.post_update"
     )
 
     return post
@@ -261,9 +270,9 @@ async def post_delete(post_id: int, session: AsyncSession = Depends(get_session)
     if result.rowcount > 0:
         try:
             await redis_client.delete("fastapi-cache:posts:posts:all")
-            print("✓ Cache cleared after post delete")
+            logger.info("Cache cleared after post delete")
         except Exception as e:
-            print(f"✗ Cache clear error: {e}")
+            logger.error(f"Cache clear error: {e}")
         
         return {'message': 'The post has been deleted'}
     else:
@@ -297,16 +306,36 @@ async def get_posts_by_user(user_id: int, session: AsyncSession = Depends(get_se
 
 @router.get('/post/summary/{post_id}')
 async def get_post_summary(post_id: int, session: AsyncSession = Depends(get_session)) -> dict:
-    stmt = select(post_table).where(post_table.c.id == post_id)
+    stmt = select(post_table.c.text).where(post_table.c.id == post_id)
     result = await session.execute(stmt)
     post = result.fetchone()
 
     if not post:
         raise HTTPException(status_code=404, detail=f'Post with id {post_id} not found')
 
-    summary = await summarize_content_async(post[3])
-    if not summary:
-        raise HTTPException(status_code=500, detail='Failed to generate summary')
+    redis_key = f"summary:{post_id}"
 
-    return {'summary': summary}
+    summary = await redis_client.get(redis_key)
+    if summary:
+        return {"summary": summary}
+
+    await rabbit_router.broker.publish(
+        {
+            "text": post.text,
+            "post_id": post_id
+        },
+        "ai.moderation.post_summary"
+    )
+
+    for _ in range(9):
+        await asyncio.sleep(1)
+        summary = await redis_client.get(redis_key)
+        if summary:
+            return {"summary": summary}
+
+    return {"status": "processing"}
+
+
+
+
 

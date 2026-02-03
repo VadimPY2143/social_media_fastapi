@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.websockets import WebSocketDisconnect
 from database_files.database import chat_table
 from database_files.db_session import get_session
+from logger import logger
 
 router = APIRouter(
     tags=['Chat'],
@@ -22,4 +23,4 @@ async def websocket_endpoint(websocket: WebSocket, session: AsyncSession = Depen
             data = await websocket.receive_text()
             
     except WebSocketDisconnect:
-        print("WebSocket connection closed")
+        logger.info("WebSocket connection closed")
