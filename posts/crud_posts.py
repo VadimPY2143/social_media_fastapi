@@ -287,7 +287,7 @@ async def get_posts_by_user(user_id: int, session: AsyncSession = Depends(get_se
     rows = result.fetchall()
 
     if not rows:
-        raise HTTPException(status_code=404, detail=f'No posts found for user with id {user_id}')
+        return {'posts': []}
 
     posts = []
     for row in rows:

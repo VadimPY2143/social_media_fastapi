@@ -353,6 +353,26 @@ class ApiClient {
     });
     return response.data;
   }
+
+  // Chat endpoints
+  async createChat(otherUserId: number) {
+    const response = await this.client.post(`/chat/chat/create/${otherUserId}`);
+    return response.data;
+  }
+
+  async getChatMessages(chatId: number, limit: number = 50, offset: number = 0) {
+    const response = await this.client.get(`/chat/chat/${chatId}/messages`, {
+      params: { limit, offset },
+    });
+    return response.data;
+  }
+
+  async searchUsers(query: string = '', limit: number = 20) {
+    const response = await this.client.get('/users/user/search', {
+      params: { query, limit },
+    });
+    return response.data;
+  }
 }
 
 export const apiClient = new ApiClient();

@@ -31,6 +31,7 @@ const Header: React.FC = () => {
             <>
               <Link to="/feed" className="text-white/80 hover:text-white transition-colors duration-200 font-medium text-sm">Feed</Link>
               <Link to="/explore" className="text-white/80 hover:text-white transition-colors duration-200 font-medium text-sm">Explore</Link>
+              <Link to="/chat" className="text-white/80 hover:text-white transition-colors duration-200 font-medium text-sm">Chat</Link>
               <Link to={`/profile/${user?.id}`} className="text-white/80 hover:text-white transition-colors duration-200 font-medium text-sm">Profile</Link>
             </>
           ) : null}

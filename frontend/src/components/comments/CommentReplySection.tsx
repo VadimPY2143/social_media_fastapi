@@ -4,7 +4,7 @@ import { CommentReply } from '../../types';
 import { apiClient } from '../../api/client';
 import { useAuthStore } from '../../store/authStore';
 import { useNotificationStore } from '../../store/notificationStore';
-import { Button } from '../common';
+import { PremiumButton } from '../common';
 
 interface CommentReplySectionProps {
   commentId: number;
@@ -88,14 +88,16 @@ const CommentReplySection: React.FC<CommentReplySectionProps> = ({ commentId, po
                 onChange={(e) => setReplyText(e.target.value)}
                 className="flex-1 px-4 py-3 border border-purple-500/20 hover:border-purple-500/40 bg-neutral-800/50 rounded-xl text-white text-sm placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 backdrop-blur-sm"
               />
-              <Button
+              <PremiumButton
                 size="sm"
+                variant="accent"
                 onClick={handleReply}
                 loading={loading}
                 disabled={!replyText.trim()}
+                className="whitespace-nowrap"
               >
                 Reply
-              </Button>
+              </PremiumButton>
             </div>
           )}
         </div>

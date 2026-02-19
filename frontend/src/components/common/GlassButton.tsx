@@ -11,13 +11,13 @@ interface GlassButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
   showLabel?: boolean;
 }
 
-const gradientMapping = {
-  blue: 'linear-gradient(hsl(223, 90%, 50%), hsl(208, 90%, 50%))',
-  purple: 'linear-gradient(hsl(283, 90%, 50%), hsl(268, 90%, 50%))',
-  red: 'linear-gradient(hsl(3, 90%, 50%), hsl(348, 90%, 50%))',
-  indigo: 'linear-gradient(hsl(253, 90%, 50%), hsl(238, 90%, 50%))',
-  orange: 'linear-gradient(hsl(43, 90%, 50%), hsl(28, 90%, 50%))',
-  green: 'linear-gradient(hsl(123, 90%, 40%), hsl(108, 90%, 40%))'
+const colorMapping = {
+  blue: 'rgba(59, 130, 246, 0.24)',
+  purple: 'rgba(168, 85, 247, 0.24)',
+  red: 'rgba(239, 68, 68, 0.24)',
+  indigo: 'rgba(99, 102, 241, 0.24)',
+  orange: 'rgba(249, 115, 22, 0.24)',
+  green: 'rgba(34, 197, 94, 0.24)',
 };
 
 const sizeMap = {
@@ -29,10 +29,10 @@ const sizeMap = {
 const GlassButton = React.forwardRef<HTMLButtonElement, GlassButtonProps>(
   ({ icon, label, color, type = 'button', className, size = 'md', showLabel = true, ...props }, ref) => {
     const getBackgroundStyle = (color: string) => {
-      if (gradientMapping[color as keyof typeof gradientMapping]) {
-        return { background: gradientMapping[color as keyof typeof gradientMapping] };
+      if (colorMapping[color as keyof typeof colorMapping]) {
+        return { background: colorMapping[color as keyof typeof colorMapping] };
       }
-      return { background: color };
+      return { background: 'rgba(255, 255, 255, 0.12)' };
     };
 
     // If icon is provided and no explicit showLabel, treat as icon button

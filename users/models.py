@@ -27,6 +27,7 @@ class UserResponse(BaseModel):
     username: str
     email: EmailStr
     password: str
+    user_avatar: bool | None = None
 
 
 class UpdateUser(BaseModel):

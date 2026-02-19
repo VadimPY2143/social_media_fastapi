@@ -6,7 +6,7 @@ import { apiClient } from '../api/client';
 import { useCallback } from 'react';
 import Layout from '../components/layout/Layout';
 import { User, FollowStats, Post } from '../types';
-import { PremiumButton, Avatar, LoadingSpinner, Card, AvatarUpload } from '../components/common';
+import { PremiumButton, Avatar, LoadingSpinner, Card, AvatarUpload, Modal } from '../components/common';
 import PostCard from '../components/posts/PostCard';
 
 const Profile: React.FC = () => {
@@ -21,6 +21,9 @@ const Profile: React.FC = () => {
   const [isFollowing, setIsFollowing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const [listType, setListType] = useState<'followers' | 'following' | null>(null);
+  const [listUsers, setListUsers] = useState<Array<{ id: number; username: string }>>([]);
+  const [listLoading, setListLoading] = useState(false);
 
   useEffect(() => {
     if (userId) fetchProfile();
@@ -39,8 +42,16 @@ const Profile: React.FC = () => {
         setIsFollowing(followStatus.is_following);
       }
       
-      const userPostsData = await apiClient.getUserPosts(parseInt(userId!));
-      setPosts(userPostsData.posts || []);
+      try {
+        const userPostsData = await apiClient.getUserPosts(parseInt(userId!));
+        setPosts(userPostsData.posts || []);
+      } catch (error: any) {
+        if (error.response?.status === 404) {
+          setPosts([]);
+        } else {
+          throw error;
+        }
+      }
     } catch {
       showNotification('Failed to load profile', 'error');
       navigate('/feed');
@@ -110,6 +121,35 @@ const Profile: React.FC = () => {
     await fetchProfile();
   };
 
+  const openList = async (type: 'followers' | 'following') => {
+    if (!profileUser) return;
+    setListType(type);
+    setListLoading(true);
+    try {
+      if (type === 'followers') {
+        const data = await apiClient.getFollowers(profileUser.id);
+        setListUsers(data.followers || []);
+      } else {
+        const data = await apiClient.getFollowing(profileUser.id);
+        const normalized = (data.following || []).map((item: any) => ({
+          id: item.user_id ?? item.id,
+          username: item.username,
+        }));
+        setListUsers(normalized);
+      }
+    } catch {
+      showNotification('Failed to load users', 'error');
+      setListUsers([]);
+    } finally {
+      setListLoading(false);
+    }
+  };
+
+  const closeList = () => {
+    setListType(null);
+    setListUsers([]);
+  };
+
   if (loading) return <Layout><LoadingSpinner fullScreen /></Layout>;
   if (!profileUser) return <Layout><p>User not found</p></Layout>;
 
@@ -148,19 +188,35 @@ const Profile: React.FC = () => {
                     <p className="text-2xl font-bold text-white">{posts.length}</p>
                     <p className="text-white/70 text-sm">Posts</p>
                   </div>
-                  <div>
-                    <p className="text-2xl font-bold text-white">{stats?.followers || 0}</p>
-                    <p className="text-white/70 text-sm">Followers</p>
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-white">{stats?.following || 0}</p>
-                    <p className="text-white/70 text-sm">Following</p>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => openList('followers')}
+                    className="text-left group"
+                  >
+                    <p className="text-2xl font-bold text-white group-hover:text-sky-200 transition-colors">
+                      {stats?.followers || 0}
+                    </p>
+                    <p className="text-white/70 text-sm group-hover:text-white transition-colors">
+                      Followers
+                    </p>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => openList('following')}
+                    className="text-left group"
+                  >
+                    <p className="text-2xl font-bold text-white group-hover:text-sky-200 transition-colors">
+                      {stats?.following || 0}
+                    </p>
+                    <p className="text-white/70 text-sm group-hover:text-white transition-colors">
+                      Following
+                    </p>
+                  </button>
                 </div>
                 {!isOwnProfile && (
                     <PremiumButton 
                       onClick={handleFollow} 
-                      variant={isFollowing ? 'secondary' : 'gradient'} 
+                      variant={isFollowing ? 'secondary' : 'accent'} 
                       size="md"
                       className="mt-4"
                     >
@@ -197,6 +253,36 @@ const Profile: React.FC = () => {
           )}
         </div>
       </div>
+
+      <Modal
+        isOpen={listType !== null}
+        onClose={closeList}
+        title={listType === 'followers' ? 'Followers' : 'Following'}
+        size="md"
+      >
+        {listLoading ? (
+          <div className="py-6 text-center text-white/70">Loading...</div>
+        ) : listUsers.length === 0 ? (
+          <div className="py-6 text-center text-white/60">No users found</div>
+        ) : (
+          <div className="space-y-3 max-h-80 overflow-y-auto pr-1">
+            {listUsers.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  closeList();
+                  navigate(`/profile/${item.id}`);
+                }}
+                className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 transition-colors"
+              >
+                <Avatar username={item.username} userId={item.id} size="sm" />
+                <span className="text-sm text-white font-medium">{item.username}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </Modal>
     </Layout>
   );
 };

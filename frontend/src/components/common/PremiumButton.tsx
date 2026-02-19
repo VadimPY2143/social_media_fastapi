@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../utils/helpers';
 
 interface PremiumButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'gradient' | 'outline';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'gradient' | 'outline' | 'accent' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
   loading?: boolean;
@@ -25,7 +25,7 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'relative inline-flex items-center justify-center font-semibold transition-all duration-300 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed';
+      'inline-flex items-center justify-center font-semibold transition-all duration-200 rounded-lg border shadow-sm shadow-white/5 backdrop-blur-sm disabled:opacity-50 disabled:cursor-not-allowed';
 
     const sizeStyles = {
       sm: 'px-4 py-2 text-sm',
@@ -35,15 +35,19 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
 
     const variantStyles = {
       primary:
-        'bg-gradient-to-r from-purple-600 to-purple-500 text-white shadow-lg shadow-purple-500/50 hover:shadow-purple-500/80 hover:from-purple-500 hover:to-purple-400 active:scale-95',
+        'bg-white/15 text-white border-white/30 hover:bg-white/25 hover:border-white/40 active:scale-95',
       secondary:
-        'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/50 hover:shadow-blue-500/80 hover:from-blue-500 hover:to-blue-400 active:scale-95',
+        'bg-neutral-800/70 text-white border-white/20 hover:bg-neutral-700/80 hover:border-white/35 active:scale-95',
       gradient:
-        'bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 text-white shadow-lg shadow-purple-500/50 hover:shadow-purple-500/80 hover:shadow-2xl active:scale-95',
+        'bg-neutral-900/70 text-white border-white/25 hover:bg-neutral-800/80 hover:border-white/40 active:scale-95',
       ghost:
-        'bg-transparent text-white border border-white/20 hover:border-white/40 hover:bg-white/5 active:scale-95',
+        'bg-transparent text-white border-white/25 hover:border-white/40 hover:bg-white/5 active:scale-95',
       outline:
-        'bg-transparent text-white border-2 border-gradient-r from-purple-500 to-pink-500 hover:bg-white/5 active:scale-95',
+        'bg-transparent text-white border-white/35 hover:bg-white/7 active:scale-95',
+      accent:
+        'bg-sky-400/80 text-slate-950 border-white/40 hover:bg-sky-300/90 hover:border-white/60 active:scale-95',
+      danger:
+        'bg-red-500/80 text-white border-white/40 hover:bg-red-400/90 hover:border-white/60 active:scale-95',
     };
 
     const roundedStyles = 'rounded-lg';
@@ -55,11 +59,6 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
         disabled={disabled || loading}
         {...props}
       >
-        {/* Shimmer effect for certain variants */}
-        {(variant === 'primary' || variant === 'secondary' || variant === 'gradient') && (
-          <div className="absolute inset-0 -top-1 h-full w-full bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        )}
-
         {/* Loading spinner */}
         {loading && <span className="inline-block mr-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>}
 
@@ -69,8 +68,6 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
         {/* Text */}
         <span className="relative z-10">{children}</span>
 
-        {/* Hover glow effect */}
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600/0 via-purple-500/0 to-pink-600/0 rounded-lg blur opacity-0 group-hover:opacity-75 transition-opacity duration-300 -z-10"></div>
       </button>
     );
   }

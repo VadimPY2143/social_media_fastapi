@@ -22,7 +22,6 @@ const Feed: React.FC = () => {
     try {
       await apiClient.deletePost(postId);
       showNotification('Post deleted', 'success');
-      // Wait for cache to be cleared on backend
       await new Promise(resolve => setTimeout(resolve, 200));
       await fetchAllPosts();
     } catch (error: any) {
@@ -31,7 +30,6 @@ const Feed: React.FC = () => {
   };
 
   const handleEditPost = async (post: any) => {
-    // Small delay in case cache is still being cleared
     await new Promise(resolve => setTimeout(resolve, 500));
     await fetchAllPosts();
   };
@@ -71,7 +69,7 @@ const Feed: React.FC = () => {
                      <p className="font-semibold text-white">John Doe</p>
                      <p className="text-xs text-white/70 mt-1">@johndoe</p>
                    </div>
-                   <PremiumButton size="sm" variant="gradient">Follow</PremiumButton>
+                   <PremiumButton size="sm" variant="accent">Follow</PremiumButton>
                  </div>
               </div>
             )}

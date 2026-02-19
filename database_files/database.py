@@ -28,7 +28,7 @@ user_table = Table(
     'users',
     metadata,
     Column('id', Integer, primary_key=True, autoincrement=True),
-    Column('username', String(15), nullable=False, unique=True),
+    Column('username', String(30), nullable=False, unique=True),
     Column('email', String(100), nullable=False),
     Column('password', String(255), nullable=False),
     Column('avatar', MEDIUMBLOB, nullable=True)
@@ -99,6 +99,16 @@ chat_table = Table(
     'chat',
     metadata,
     Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('user_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
+    Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
+)
+
+chat_members_table = Table(
+    'chat_members',
+    metadata,
+    Column('id', Integer, primary_key=True, autoincrement=True),
+    Column('chat_id', ForeignKey('chat.id', ondelete='CASCADE'), nullable=False),
+    Column('user_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
     Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
 )
 
@@ -108,7 +118,8 @@ message_table = Table(
     Column('id', Integer, primary_key=True, autoincrement=True),
     Column('chat_id', ForeignKey('chat.id', ondelete='CASCADE'), nullable=False),
     Column('user_id', ForeignKey('users.id', ondelete='CASCADE'), nullable=False),
-    Column('message', String(500), nullable=False),
+    Column('message', String(500), nullable=False, default=""),
+    Column('image', MEDIUMBLOB, nullable=True),
     Column('created_at', DateTime, default=datetime.utcnow, nullable=False),
 )
 

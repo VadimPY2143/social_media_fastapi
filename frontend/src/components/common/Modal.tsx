@@ -19,20 +19,20 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, size = 
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className={cn('bg-white rounded-lg shadow-lg', sizeClasses[size])}>
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-4">
+      <div className={cn('bg-neutral-900 rounded-xl border border-white/10 shadow-2xl shadow-black/40 w-full', sizeClasses[size])}>
         {title && (
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
+          <div className="flex items-center justify-between p-5 border-b border-white/10">
+            <h2 className="text-lg font-semibold text-white">{title}</h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+              className="text-white/60 hover:text-white text-2xl font-bold"
             >
               ×
             </button>
           </div>
         )}
-        <div className="p-6">{children}</div>
+        <div className="p-5 text-white">{children}</div>
       </div>
     </div>
   );

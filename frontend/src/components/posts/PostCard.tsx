@@ -133,7 +133,7 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete, onEdit }) => {
             {canEdit && (
               <div className="flex gap-2">
                 <PremiumButton size="sm" variant="ghost" onClick={handleEditClick}>Edit</PremiumButton>
-                <PremiumButton size="sm" variant="secondary" onClick={handleDelete}>Delete</PremiumButton>
+                <PremiumButton size="sm" variant="danger" onClick={handleDelete}>Delete</PremiumButton>
               </div>
             )}
           </div>
@@ -151,11 +151,11 @@ const PostCard: React.FC<PostCardProps> = ({ post, onDelete, onEdit }) => {
           )}
           
           {post.picture && !imageError && (
-            <div className="mt-3 bg-gray-100 rounded-lg flex items-center justify-center max-w-md">
-              <img 
-                src={`http://localhost:8000/posts/post/${post.id}/image`} 
-                alt="Post Image" 
-                className="w-full h-auto max-h-96 object-contain rounded-lg" 
+            <div className="mt-3 max-w-md rounded-lg overflow-hidden bg-transparent">
+              <img
+                src={`http://localhost:8000/posts/post/${post.id}/image`}
+                alt="Post Image"
+                className="w-full h-auto max-h-80 object-contain bg-transparent"
                 onError={() => setImageError(true)}
               />
             </div>

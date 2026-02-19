@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
 
-// Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Feed from './pages/Feed';
 import Profile from './pages/Profile';
 import Explore from './pages/Explore';
+import Chat from './pages/Chat';
+import AuthCallback from './pages/AuthCallback';
 
-// Protected route component
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
@@ -45,6 +45,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={isAuthenticated ? <Navigate to="/feed" /> : <Login />} />
         <Route path="/register" element={isAuthenticated ? <Navigate to="/feed" /> : <Register />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
         
         <Route
           path="/feed"
@@ -67,6 +68,14 @@ const App: React.FC = () => {
           element={
             <ProtectedRoute>
               <Explore />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
             </ProtectedRoute>
           }
         />

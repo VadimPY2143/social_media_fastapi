@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-950 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <DarkVeil
         speed={1.2}
         warpAmount={0.25}
@@ -60,16 +60,33 @@ const Login: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <PremiumButton 
-            type="submit" 
-            loading={isLoading} 
-            variant="gradient"
-            size="lg"
-            className="w-full"
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full h-12 rounded-lg border border-white/20 bg-white/10 hover:bg-white/15 transition-colors flex items-center justify-center text-white font-semibold disabled:opacity-60"
           >
             {isLoading ? 'Signing in...' : 'Sign In'}
-          </PremiumButton>
+          </button>
         </form>
+
+        <div className="mt-5">
+          <a
+            href={`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/users/auth/login/google`}
+            className="block"
+          >
+            <button
+              type="button"
+              className="w-full h-12 rounded-lg border border-white/20 bg-white/10 hover:bg-white/15 transition-colors flex items-center justify-center gap-3 text-white font-semibold"
+            >
+              <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              Continue with Google
+            </button>
+          </a>
+        </div>
 
         <p className="mt-6 text-center text-white/60 text-sm">
           Don't have an account? <Link to="/register" className="text-purple-400 hover:text-purple-300 font-semibold transition-colors">Create one</Link>

@@ -190,3 +190,1043 @@
 2026-02-03 14:00:25 - moodshare - DEBUG - Result cached
 2026-02-03 14:02:10 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
 2026-02-03 22:22:48 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-04 00:56:55 - moodshare - DEBUG - Cache miss, querying database
+2026-02-04 00:56:55 - moodshare - DEBUG - Result cached
+2026-02-04 00:57:18 - moodshare - INFO - Cache cleared after post creation
+2026-02-04 00:57:18 - moodshare - INFO - Background AI check queued for post 98
+2026-02-04 00:57:18 - moodshare - INFO - Starting AI check for post 98...
+2026-02-04 00:57:19 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-04 00:57:19 - moodshare - DEBUG - Updating post 98 with is_approved=0
+2026-02-04 00:57:19 - moodshare - DEBUG - Cache cleared for post 98
+2026-02-04 00:57:19 - moodshare - DEBUG - Cache miss, querying database
+2026-02-04 00:57:19 - moodshare - DEBUG - Result cached
+2026-02-04 00:57:27 - moodshare - DEBUG - Cache hit
+2026-02-04 00:57:27 - moodshare - DEBUG - Cache hit
+2026-02-04 00:58:41 - moodshare - DEBUG - Cache hit
+2026-02-04 00:58:41 - moodshare - DEBUG - Cache hit
+2026-02-04 01:00:20 - moodshare - DEBUG - Cache miss, querying database
+2026-02-04 01:00:20 - moodshare - DEBUG - Result cached
+2026-02-04 01:00:26 - moodshare - DEBUG - Cache hit
+2026-02-04 01:00:26 - moodshare - DEBUG - Cache hit
+2026-02-04 01:01:38 - moodshare - DEBUG - Cache hit
+2026-02-04 01:01:39 - moodshare - DEBUG - Cache hit
+2026-02-04 01:02:59 - moodshare - DEBUG - Cache miss, querying database
+2026-02-04 01:02:59 - moodshare - DEBUG - Result cached
+2026-02-04 01:03:07 - moodshare - DEBUG - Cache hit
+2026-02-05 13:07:03 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-05 13:07:03 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:07:03 - moodshare - DEBUG - Result cached
+2026-02-05 13:07:08 - moodshare - DEBUG - Cache hit
+2026-02-05 13:07:35 - moodshare - DEBUG - Cache hit
+2026-02-05 13:07:45 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:07:45 - moodshare - INFO - Background AI check queued for post 99
+2026-02-05 13:07:45 - moodshare - INFO - Starting AI check for post 99...
+2026-02-05 13:07:45 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:07:45 - moodshare - DEBUG - Updating post 99 with is_approved=1
+2026-02-05 13:07:45 - moodshare - DEBUG - Cache cleared for post 99
+2026-02-05 13:07:45 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:07:45 - moodshare - DEBUG - Result cached
+2026-02-05 13:07:49 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:07:50 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:07:50 - moodshare - DEBUG - Result cached
+2026-02-05 13:07:59 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:07:59 - moodshare - INFO - Background AI check queued for post 100
+2026-02-05 13:07:59 - moodshare - INFO - Starting AI check for post 100...
+2026-02-05 13:08:00 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:08:00 - moodshare - DEBUG - Updating post 100 with is_approved=0
+2026-02-05 13:08:00 - moodshare - DEBUG - Cache cleared for post 100
+2026-02-05 13:08:00 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:08:00 - moodshare - DEBUG - Result cached
+2026-02-05 13:12:46 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:12:55 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:13:01 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:13:01 - moodshare - DEBUG - Result cached
+2026-02-05 13:13:04 - moodshare - DEBUG - Cache hit
+2026-02-05 13:14:44 - moodshare - DEBUG - Cache hit
+2026-02-05 13:14:44 - moodshare - DEBUG - Cache hit
+2026-02-05 13:14:55 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:14:55 - moodshare - INFO - Background AI check queued for post 101
+2026-02-05 13:14:55 - moodshare - INFO - Starting AI check for post 101...
+2026-02-05 13:14:56 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:14:56 - moodshare - DEBUG - Updating post 101 with is_approved=-1
+2026-02-05 13:14:56 - moodshare - DEBUG - Cache cleared for post 101
+2026-02-05 13:15:01 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:15:01 - moodshare - INFO - Background AI check queued for post 102
+2026-02-05 13:15:01 - moodshare - INFO - Starting AI check for post 102...
+2026-02-05 13:15:01 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:15:01 - moodshare - DEBUG - Updating post 102 with is_approved=1
+2026-02-05 13:15:01 - moodshare - DEBUG - Cache cleared for post 102
+2026-02-05 13:15:10 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:15:10 - moodshare - DEBUG - Result cached
+2026-02-05 13:15:11 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:15:21 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:15:21 - moodshare - INFO - Background AI check queued for post 103
+2026-02-05 13:15:21 - moodshare - INFO - Starting AI check for post 103...
+2026-02-05 13:15:23 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:15:23 - moodshare - DEBUG - Updating post 103 with is_approved=0
+2026-02-05 13:15:23 - moodshare - DEBUG - Cache cleared for post 103
+2026-02-05 13:15:23 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:15:23 - moodshare - DEBUG - Result cached
+2026-02-05 13:16:05 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:16:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:16:05 - moodshare - DEBUG - Result cached
+2026-02-05 13:16:10 - moodshare - DEBUG - Cache hit
+2026-02-05 13:16:10 - moodshare - DEBUG - Cache hit
+2026-02-05 13:18:58 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:19:24 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:19:24 - moodshare - DEBUG - Result cached
+2026-02-05 13:19:27 - moodshare - DEBUG - Cache hit
+2026-02-05 13:19:31 - moodshare - DEBUG - Cache hit
+2026-02-05 13:19:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:19:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:19:54 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:19:54 - moodshare - INFO - Background AI check queued for post 104
+2026-02-05 13:19:54 - moodshare - INFO - Starting AI check for post 104...
+2026-02-05 13:19:55 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:19:55 - moodshare - DEBUG - Updating post 104 with is_approved=1
+2026-02-05 13:19:55 - moodshare - DEBUG - Cache cleared for post 104
+2026-02-05 13:19:58 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:19:58 - moodshare - DEBUG - Result cached
+2026-02-05 13:20:32 - moodshare - DEBUG - Cache hit
+2026-02-05 13:20:32 - moodshare - DEBUG - Cache hit
+2026-02-05 13:20:35 - moodshare - DEBUG - Cache hit
+2026-02-05 13:20:37 - moodshare - DEBUG - Cache hit
+2026-02-05 13:20:40 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:20:51 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:20:52 - moodshare - INFO - Background AI check queued for post 105
+2026-02-05 13:20:52 - moodshare - INFO - Starting AI check for post 105...
+2026-02-05 13:20:53 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:20:53 - moodshare - DEBUG - Updating post 105 with is_approved=1
+2026-02-05 13:20:53 - moodshare - DEBUG - Cache cleared for post 105
+2026-02-05 13:20:53 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:20:53 - moodshare - DEBUG - Result cached
+2026-02-05 13:20:59 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:20:59 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:20:59 - moodshare - DEBUG - Result cached
+2026-02-05 13:21:04 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:21:04 - moodshare - INFO - Background AI check queued for post 106
+2026-02-05 13:21:04 - moodshare - INFO - Starting AI check for post 106...
+2026-02-05 13:21:05 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:21:05 - moodshare - DEBUG - Updating post 106 with is_approved=1
+2026-02-05 13:21:05 - moodshare - DEBUG - Cache cleared for post 106
+2026-02-05 13:21:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:21:05 - moodshare - DEBUG - Result cached
+2026-02-05 13:22:03 - moodshare - DEBUG - Cache hit
+2026-02-05 13:22:03 - moodshare - DEBUG - Cache hit
+2026-02-05 13:22:05 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:22:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:22:05 - moodshare - DEBUG - Result cached
+2026-02-05 13:22:10 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:22:10 - moodshare - INFO - Background AI check queued for post 107
+2026-02-05 13:22:10 - moodshare - INFO - Starting AI check for post 107...
+2026-02-05 13:22:12 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:22:12 - moodshare - DEBUG - Updating post 107 with is_approved=1
+2026-02-05 13:22:12 - moodshare - DEBUG - Cache cleared for post 107
+2026-02-05 13:22:12 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:22:12 - moodshare - DEBUG - Result cached
+2026-02-05 13:22:30 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:22:30 - moodshare - INFO - Background AI check queued for post 108
+2026-02-05 13:22:30 - moodshare - INFO - Starting AI check for post 108...
+2026-02-05 13:22:31 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:22:31 - moodshare - DEBUG - Updating post 108 with is_approved=0
+2026-02-05 13:22:31 - moodshare - DEBUG - Cache cleared for post 108
+2026-02-05 13:22:31 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:22:31 - moodshare - DEBUG - Result cached
+2026-02-05 13:22:37 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:22:37 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:22:37 - moodshare - DEBUG - Result cached
+2026-02-05 13:22:38 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:22:39 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:22:39 - moodshare - DEBUG - Result cached
+2026-02-05 13:25:37 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:25:37 - moodshare - DEBUG - Result cached
+2026-02-05 13:25:41 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:25:52 - moodshare - DEBUG - Cache hit
+2026-02-05 13:25:52 - moodshare - DEBUG - Cache hit
+2026-02-05 13:25:58 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:25:58 - moodshare - INFO - Background AI check queued for post 109
+2026-02-05 13:25:58 - moodshare - INFO - Starting AI check for post 109...
+2026-02-05 13:25:59 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:25:59 - moodshare - DEBUG - Updating post 109 with is_approved=1
+2026-02-05 13:25:59 - moodshare - DEBUG - Cache cleared for post 109
+2026-02-05 13:26:09 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:26:09 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:26:09 - moodshare - DEBUG - Result cached
+2026-02-05 13:26:10 - moodshare - DEBUG - Cache hit
+2026-02-05 13:26:16 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:26:16 - moodshare - INFO - Background AI check queued for post 110
+2026-02-05 13:26:16 - moodshare - INFO - Starting AI check for post 110...
+2026-02-05 13:26:16 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:26:16 - moodshare - DEBUG - Updating post 110 with is_approved=1
+2026-02-05 13:26:16 - moodshare - DEBUG - Cache cleared for post 110
+2026-02-05 13:26:27 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:26:27 - moodshare - DEBUG - Result cached
+2026-02-05 13:27:03 - moodshare - DEBUG - Cache hit
+2026-02-05 13:27:04 - moodshare - DEBUG - Cache hit
+2026-02-05 13:27:05 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:27:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:27:05 - moodshare - DEBUG - Result cached
+2026-02-05 13:27:10 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:27:10 - moodshare - INFO - Background AI check queued for post 111
+2026-02-05 13:27:10 - moodshare - INFO - Starting AI check for post 111...
+2026-02-05 13:27:11 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:27:11 - moodshare - DEBUG - Updating post 111 with is_approved=1
+2026-02-05 13:27:11 - moodshare - DEBUG - Cache cleared for post 111
+2026-02-05 13:27:16 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:27:16 - moodshare - DEBUG - Result cached
+2026-02-05 13:27:26 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:27:26 - moodshare - INFO - Background AI check queued for post 112
+2026-02-05 13:27:26 - moodshare - INFO - Starting AI check for post 112...
+2026-02-05 13:27:27 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:27:27 - moodshare - DEBUG - Updating post 112 with is_approved=0
+2026-02-05 13:27:27 - moodshare - DEBUG - Cache cleared for post 112
+2026-02-05 13:27:32 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:27:32 - moodshare - DEBUG - Result cached
+2026-02-05 13:28:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:28:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:28:05 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:28:14 - moodshare - DEBUG - Cache hit
+2026-02-05 13:28:14 - moodshare - DEBUG - Cache hit
+2026-02-05 13:28:17 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:28:17 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:28:17 - moodshare - DEBUG - Result cached
+2026-02-05 13:28:21 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:28:21 - moodshare - INFO - Background AI check queued for post 113
+2026-02-05 13:28:21 - moodshare - INFO - Starting AI check for post 113...
+2026-02-05 13:28:22 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:28:22 - moodshare - DEBUG - Updating post 113 with is_approved=1
+2026-02-05 13:28:22 - moodshare - DEBUG - Cache cleared for post 113
+2026-02-05 13:28:22 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:28:22 - moodshare - DEBUG - Result cached
+2026-02-05 13:28:43 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:28:43 - moodshare - INFO - Background AI check queued for post 114
+2026-02-05 13:28:43 - moodshare - INFO - Starting AI check for post 114...
+2026-02-05 13:28:43 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:28:43 - moodshare - DEBUG - Updating post 114 with is_approved=0
+2026-02-05 13:28:43 - moodshare - DEBUG - Cache cleared for post 114
+2026-02-05 13:28:43 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:28:43 - moodshare - DEBUG - Result cached
+2026-02-05 13:29:04 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:29:04 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:29:04 - moodshare - DEBUG - Result cached
+2026-02-05 13:30:28 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:30:28 - moodshare - INFO - Background AI check queued for post 115
+2026-02-05 13:30:28 - moodshare - INFO - Starting AI check for post 115...
+2026-02-05 13:30:28 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:30:28 - moodshare - DEBUG - Updating post 115 with is_approved=1
+2026-02-05 13:30:28 - moodshare - DEBUG - Cache cleared for post 115
+2026-02-05 13:30:28 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:30:28 - moodshare - DEBUG - Result cached
+2026-02-05 13:30:33 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:30:33 - moodshare - INFO - Background AI check queued for post 116
+2026-02-05 13:30:33 - moodshare - INFO - Starting AI check for post 116...
+2026-02-05 13:30:34 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:30:34 - moodshare - DEBUG - Updating post 116 with is_approved=1
+2026-02-05 13:30:34 - moodshare - DEBUG - Cache cleared for post 116
+2026-02-05 13:30:34 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:30:34 - moodshare - DEBUG - Result cached
+2026-02-05 13:30:38 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:30:39 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:30:39 - moodshare - DEBUG - Result cached
+2026-02-05 13:31:03 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:31:03 - moodshare - INFO - Background AI check queued for post 117
+2026-02-05 13:31:03 - moodshare - INFO - Starting AI check for post 117...
+2026-02-05 13:31:04 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:31:04 - moodshare - DEBUG - Updating post 117 with is_approved=0
+2026-02-05 13:31:04 - moodshare - DEBUG - Cache cleared for post 117
+2026-02-05 13:31:04 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:31:04 - moodshare - DEBUG - Result cached
+2026-02-05 13:32:35 - moodshare - DEBUG - Cache hit
+2026-02-05 13:32:35 - moodshare - DEBUG - Cache hit
+2026-02-05 13:32:37 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:32:52 - moodshare - DEBUG - Cache hit
+2026-02-05 13:32:52 - moodshare - DEBUG - Cache hit
+2026-02-05 13:32:57 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:32:57 - moodshare - INFO - Background AI check queued for post 118
+2026-02-05 13:32:57 - moodshare - INFO - Starting AI check for post 118...
+2026-02-05 13:32:58 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:32:58 - moodshare - DEBUG - Updating post 118 with is_approved=1
+2026-02-05 13:32:58 - moodshare - DEBUG - Cache cleared for post 118
+2026-02-05 13:33:08 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:33:08 - moodshare - DEBUG - Result cached
+2026-02-05 13:33:15 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:33:15 - moodshare - INFO - Background AI check queued for post 119
+2026-02-05 13:33:15 - moodshare - INFO - Starting AI check for post 119...
+2026-02-05 13:33:16 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:33:16 - moodshare - DEBUG - Updating post 119 with is_approved=0
+2026-02-05 13:33:16 - moodshare - DEBUG - Cache cleared for post 119
+2026-02-05 13:33:26 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:33:26 - moodshare - DEBUG - Result cached
+2026-02-05 13:36:11 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:36:11 - moodshare - DEBUG - Result cached
+2026-02-05 13:36:17 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:36:17 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:36:17 - moodshare - DEBUG - Result cached
+2026-02-05 13:36:18 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:36:18 - moodshare - INFO - Background AI check queued for post 120
+2026-02-05 13:36:18 - moodshare - INFO - Starting AI check for post 120...
+2026-02-05 13:36:19 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:36:19 - moodshare - DEBUG - Updating post 120 with is_approved=1
+2026-02-05 13:36:19 - moodshare - DEBUG - Cache cleared for post 120
+2026-02-05 13:36:29 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:36:29 - moodshare - DEBUG - Result cached
+2026-02-05 13:36:39 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:36:39 - moodshare - INFO - Background AI check queued for post 121
+2026-02-05 13:36:39 - moodshare - INFO - Starting AI check for post 121...
+2026-02-05 13:36:39 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:36:39 - moodshare - DEBUG - Updating post 121 with is_approved=0
+2026-02-05 13:36:39 - moodshare - DEBUG - Cache cleared for post 121
+2026-02-05 13:36:49 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:36:49 - moodshare - DEBUG - Result cached
+2026-02-05 13:38:05 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:38:05 - moodshare - INFO - Background AI check queued for post 122
+2026-02-05 13:38:05 - moodshare - INFO - Starting AI check for post 122...
+2026-02-05 13:38:06 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:38:06 - moodshare - DEBUG - Updating post 122 with is_approved=0
+2026-02-05 13:38:06 - moodshare - DEBUG - Cache cleared for post 122
+2026-02-05 13:38:07 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:38:07 - moodshare - DEBUG - Result cached
+2026-02-05 13:38:08 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:09 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:10 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:11 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:12 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:13 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:14 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:15 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:16 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:16 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:44 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:44 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-05 13:38:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:53 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:38:53 - moodshare - INFO - Background AI check queued for post 123
+2026-02-05 13:38:53 - moodshare - INFO - Starting AI check for post 123...
+2026-02-05 13:38:54 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:38:54 - moodshare - DEBUG - Updating post 123 with is_approved=0
+2026-02-05 13:38:54 - moodshare - DEBUG - Cache cleared for post 123
+2026-02-05 13:38:55 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:38:55 - moodshare - DEBUG - Result cached
+2026-02-05 13:38:56 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:57 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:58 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:59 - moodshare - DEBUG - Cache hit
+2026-02-05 13:38:59 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:16 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:16 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:21 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:39:21 - moodshare - INFO - Background AI check queued for post 124
+2026-02-05 13:39:21 - moodshare - INFO - Starting AI check for post 124...
+2026-02-05 13:39:22 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:39:22 - moodshare - DEBUG - Updating post 124 with is_approved=0
+2026-02-05 13:39:22 - moodshare - DEBUG - Cache cleared for post 124
+2026-02-05 13:39:23 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:39:23 - moodshare - DEBUG - Result cached
+2026-02-05 13:39:24 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:25 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:26 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:26 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:33 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:39:34 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:39:34 - moodshare - DEBUG - Result cached
+2026-02-05 13:39:36 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:39:36 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:39:36 - moodshare - DEBUG - Result cached
+2026-02-05 13:39:43 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:39:43 - moodshare - INFO - Background AI check queued for post 125
+2026-02-05 13:39:43 - moodshare - INFO - Starting AI check for post 125...
+2026-02-05 13:39:44 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:39:44 - moodshare - DEBUG - Updating post 125 with is_approved=1
+2026-02-05 13:39:44 - moodshare - DEBUG - Cache cleared for post 125
+2026-02-05 13:39:45 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:39:45 - moodshare - DEBUG - Result cached
+2026-02-05 13:39:46 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:48 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:48 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:55 - moodshare - DEBUG - Cache hit
+2026-02-05 13:39:55 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:00 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:00 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:00 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:00 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:01 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:34 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:40:34 - moodshare - INFO - Background AI check queued for post 126
+2026-02-05 13:40:34 - moodshare - INFO - Starting AI check for post 126...
+2026-02-05 13:40:35 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:40:35 - moodshare - DEBUG - Updating post 126 with is_approved=0
+2026-02-05 13:40:35 - moodshare - DEBUG - Cache cleared for post 126
+2026-02-05 13:40:36 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:40:36 - moodshare - DEBUG - Result cached
+2026-02-05 13:40:37 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:38 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:39 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:39 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:42 - moodshare - INFO - Cache cleared after post delete
+2026-02-05 13:40:42 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:40:42 - moodshare - DEBUG - Result cached
+2026-02-05 13:40:53 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:40:53 - moodshare - INFO - Background AI check queued for post 127
+2026-02-05 13:40:53 - moodshare - INFO - Starting AI check for post 127...
+2026-02-05 13:40:55 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:40:55 - moodshare - DEBUG - Updating post 127 with is_approved=0
+2026-02-05 13:40:55 - moodshare - DEBUG - Cache cleared for post 127
+2026-02-05 13:40:56 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:40:56 - moodshare - DEBUG - Result cached
+2026-02-05 13:40:57 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:58 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:59 - moodshare - DEBUG - Cache hit
+2026-02-05 13:40:59 - moodshare - DEBUG - Cache hit
+2026-02-05 13:41:45 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:41:45 - moodshare - INFO - Background AI check queued for post 128
+2026-02-05 13:41:45 - moodshare - INFO - Starting AI check for post 128...
+2026-02-05 13:41:46 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:41:46 - moodshare - DEBUG - Updating post 128 with is_approved=1
+2026-02-05 13:41:46 - moodshare - DEBUG - Cache cleared for post 128
+2026-02-05 13:41:47 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:41:47 - moodshare - DEBUG - Result cached
+2026-02-05 13:41:47 - moodshare - DEBUG - Cache hit
+2026-02-05 13:41:48 - moodshare - DEBUG - Cache hit
+2026-02-05 13:41:48 - moodshare - DEBUG - Cache hit
+2026-02-05 13:42:45 - moodshare - DEBUG - Cache hit
+2026-02-05 13:42:45 - moodshare - DEBUG - Cache hit
+2026-02-05 13:42:48 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 13:42:59 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:42:59 - moodshare - INFO - Background AI check queued for post 129
+2026-02-05 13:42:59 - moodshare - INFO - Starting AI check for post 129...
+2026-02-05 13:43:00 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-05 13:43:00 - moodshare - DEBUG - Updating post 129 with is_approved=1
+2026-02-05 13:43:00 - moodshare - DEBUG - Cache cleared for post 129
+2026-02-05 13:43:00 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:43:00 - moodshare - DEBUG - Result cached
+2026-02-05 13:43:11 - moodshare - INFO - Cache cleared after post creation
+2026-02-05 13:43:11 - moodshare - INFO - Background AI check queued for post 130
+2026-02-05 13:43:11 - moodshare - INFO - Starting AI check for post 130...
+2026-02-05 13:43:12 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-05 13:43:12 - moodshare - DEBUG - Updating post 130 with is_approved=0
+2026-02-05 13:43:12 - moodshare - DEBUG - Cache cleared for post 130
+2026-02-05 13:43:12 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 13:43:12 - moodshare - DEBUG - Result cached
+2026-02-05 22:02:43 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:02:49 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:02:54 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:03:00 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:03:37 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:05:09 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-05 22:05:09 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 22:05:09 - moodshare - DEBUG - Result cached
+2026-02-05 22:05:11 - moodshare - DEBUG - Cache hit
+2026-02-05 22:05:20 - moodshare - DEBUG - Cache hit
+2026-02-05 22:13:18 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:14:41 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:14:43 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:17:50 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:31:46 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 22:31:46 - moodshare - DEBUG - Result cached
+2026-02-05 22:43:59 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:46:19 - moodshare - ERROR - JWT verification error: Signature verification failed.
+2026-02-05 22:49:44 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 22:51:01 - moodshare - ERROR - JWT verification error: Invalid crypto padding
+2026-02-05 22:51:59 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 22:56:51 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-05 22:56:51 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 22:56:51 - moodshare - DEBUG - Result cached
+2026-02-05 22:58:13 - moodshare - DEBUG - Cache hit
+2026-02-05 22:58:13 - moodshare - DEBUG - Cache hit
+2026-02-05 22:58:19 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 22:58:40 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 22:58:49 - moodshare - DEBUG - Cache hit
+2026-02-05 22:58:49 - moodshare - DEBUG - Cache hit
+2026-02-05 22:58:56 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:01:16 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:01:16 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:01:16 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:04:19 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:04:29 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:05:08 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:05:08 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:05:16 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:05:18 - moodshare - INFO - User 2 connected to chat 2
+2026-02-05 23:05:24 - moodshare - INFO - User 2 disconnected from chat 2
+2026-02-05 23:05:24 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:05:25 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:05:25 - moodshare - INFO - User 2 connected to chat 2
+2026-02-05 23:05:30 - moodshare - INFO - User 2 disconnected from chat 2
+2026-02-05 23:05:30 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 23:05:30 - moodshare - DEBUG - Result cached
+2026-02-05 23:05:37 - moodshare - INFO - User 2 connected to chat 2
+2026-02-05 23:05:39 - moodshare - INFO - User 2 disconnected from chat 2
+2026-02-05 23:05:39 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:05:39 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:05:39 - moodshare - INFO - User 2 connected to chat 2
+2026-02-05 23:06:00 - moodshare - DEBUG - Cache hit
+2026-02-05 23:06:00 - moodshare - DEBUG - Cache hit
+2026-02-05 23:06:03 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 23:06:09 - moodshare - INFO - User 2 disconnected from chat 2
+2026-02-05 23:06:09 - moodshare - INFO - User 2 connected to chat 1
+2026-02-05 23:06:19 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:06:19 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:06:27 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:06:27 - moodshare - DEBUG - Cache hit
+2026-02-05 23:09:54 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 23:09:55 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:09:55 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:10:19 - moodshare - INFO - User 2 disconnected from chat 1
+2026-02-05 23:10:32 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 23:10:32 - moodshare - DEBUG - Result cached
+2026-02-05 23:10:36 - moodshare - INFO - User 3 connected to chat 2
+2026-02-05 23:10:36 - moodshare - INFO - User 3 disconnected from chat 2
+2026-02-05 23:10:36 - moodshare - INFO - User 3 connected to chat 3
+2026-02-05 23:10:55 - moodshare - DEBUG - Cache hit
+2026-02-05 23:10:55 - moodshare - DEBUG - Cache hit
+2026-02-05 23:11:01 - moodshare - DEBUG - Cache hit
+2026-02-05 23:11:01 - moodshare - DEBUG - Cache hit
+2026-02-05 23:11:04 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:17:25 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:17:25 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 23:17:25 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:17:25 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:17:28 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:17:28 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 23:17:29 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 23:17:29 - moodshare - DEBUG - Result cached
+2026-02-05 23:17:31 - moodshare - DEBUG - Cache hit
+2026-02-05 23:17:31 - moodshare - DEBUG - Cache hit
+2026-02-05 23:35:35 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:35:35 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:35:35 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-05 23:35:35 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:35:59 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:36:20 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 23:36:20 - moodshare - DEBUG - Result cached
+2026-02-05 23:36:22 - moodshare - INFO - User 3 connected to chat 3
+2026-02-05 23:37:32 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-05 23:37:32 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:37:32 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:38:34 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:38:40 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:39:13 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-05 23:39:21 - moodshare - INFO - User 3 connected to chat 2
+2026-02-05 23:39:22 - moodshare - INFO - User 3 disconnected from chat 2
+2026-02-05 23:39:22 - moodshare - INFO - User 3 connected to chat 3
+2026-02-05 23:39:42 - moodshare - DEBUG - Cache miss, querying database
+2026-02-05 23:39:42 - moodshare - DEBUG - Result cached
+2026-02-05 23:39:44 - moodshare - INFO - User 1 connected to chat 1
+2026-02-05 23:39:46 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-05 23:39:46 - moodshare - INFO - User 1 connected to chat 3
+2026-02-05 23:41:51 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-05 23:41:51 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-05 23:41:51 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:13:57 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:14:02 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-08 12:14:02 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:14:02 - moodshare - DEBUG - Result cached
+2026-02-08 12:14:04 - moodshare - DEBUG - Cache hit
+2026-02-08 12:14:11 - moodshare - DEBUG - Cache hit
+2026-02-08 12:14:11 - moodshare - DEBUG - Cache hit
+2026-02-08 12:14:22 - moodshare - DEBUG - Cache hit
+2026-02-08 12:14:22 - moodshare - DEBUG - Cache hit
+2026-02-08 12:14:26 - moodshare - INFO - User 3 connected to chat 3
+2026-02-08 12:14:37 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:18:32 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:18:32 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-08 12:18:32 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:22:50 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:25:09 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:27:29 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:27:29 - moodshare - DEBUG - Result cached
+2026-02-08 12:27:33 - moodshare - INFO - User 3 connected to chat 3
+2026-02-08 12:27:39 - moodshare - DEBUG - Cache hit
+2026-02-08 12:27:39 - moodshare - DEBUG - Cache hit
+2026-02-08 12:27:42 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:28:05 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:28:07 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:28:38 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-08 12:28:38 - moodshare - DEBUG - Cache hit
+2026-02-08 12:28:38 - moodshare - DEBUG - Cache hit
+2026-02-08 12:29:46 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:29:46 - moodshare - DEBUG - Result cached
+2026-02-08 12:29:50 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:29:50 - moodshare - INFO - Background AI check queued for post 131
+2026-02-08 12:29:51 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:29:51 - moodshare - DEBUG - Result cached
+2026-02-08 12:29:59 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:29:59 - moodshare - INFO - Background AI check queued for post 132
+2026-02-08 12:29:59 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:29:59 - moodshare - DEBUG - Result cached
+2026-02-08 12:32:09 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:32:09 - moodshare - DEBUG - Result cached
+2026-02-08 12:32:15 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:32:15 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:32:15 - moodshare - DEBUG - Result cached
+2026-02-08 12:32:21 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:32:21 - moodshare - INFO - Background AI check queued for post 133
+2026-02-08 12:32:21 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:32:21 - moodshare - DEBUG - Result cached
+2026-02-08 12:32:41 - moodshare - DEBUG - Cache hit
+2026-02-08 12:32:41 - moodshare - DEBUG - Cache hit
+2026-02-08 12:33:25 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:33:31 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:33:52 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:34:15 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:34:42 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:35:00 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:35:14 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:35:14 - moodshare - DEBUG - Result cached
+2026-02-08 12:36:20 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:20 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:28 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:36:29 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:36:29 - moodshare - DEBUG - Result cached
+2026-02-08 12:36:30 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:30 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:31 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:31 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:54 - moodshare - DEBUG - Cache hit
+2026-02-08 12:36:54 - moodshare - DEBUG - Cache hit
+2026-02-08 12:37:03 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:37:03 - moodshare - INFO - Background AI check queued for post 134
+2026-02-08 12:37:03 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:37:03 - moodshare - DEBUG - Result cached
+2026-02-08 12:38:24 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-08 12:38:40 - moodshare - DEBUG - Cache hit
+2026-02-08 12:38:43 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:38:43 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:38:43 - moodshare - DEBUG - Result cached
+2026-02-08 12:38:45 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:38:45 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:38:45 - moodshare - DEBUG - Result cached
+2026-02-08 12:38:47 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:38:48 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:38:48 - moodshare - DEBUG - Result cached
+2026-02-08 12:38:54 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:38:54 - moodshare - INFO - Background AI check queued for post 135
+2026-02-08 12:38:54 - moodshare - INFO - Starting AI check for post 135...
+2026-02-08 12:38:55 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-08 12:38:55 - moodshare - DEBUG - Updating post 135 with is_approved=0
+2026-02-08 12:38:55 - moodshare - DEBUG - Cache cleared for post 135
+2026-02-08 12:38:55 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:38:55 - moodshare - DEBUG - Result cached
+2026-02-08 12:41:30 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 12:41:30 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 12:41:30 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:43:47 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:43:47 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:43:59 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:43:59 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:44:02 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:44:02 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:44:17 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:44:17 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:44:17 - moodshare - DEBUG - Result cached
+2026-02-08 12:45:34 - moodshare - DEBUG - Cache hit
+2026-02-08 12:45:34 - moodshare - DEBUG - Cache hit
+2026-02-08 12:45:38 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 12:45:40 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 12:45:40 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:45:45 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:45:45 - moodshare - DEBUG - Cache hit
+2026-02-08 12:45:50 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:45:50 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:45:50 - moodshare - DEBUG - Result cached
+2026-02-08 12:45:59 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:45:59 - moodshare - INFO - Background AI check queued for post 136
+2026-02-08 12:45:59 - moodshare - INFO - Starting AI check for post 136...
+2026-02-08 12:46:00 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-08 12:46:00 - moodshare - DEBUG - Updating post 136 with is_approved=1
+2026-02-08 12:46:00 - moodshare - DEBUG - Cache cleared for post 136
+2026-02-08 12:46:00 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:46:00 - moodshare - DEBUG - Result cached
+2026-02-08 12:46:17 - moodshare - INFO - Starting AI check for updated post 136...
+2026-02-08 12:46:18 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-08 12:46:18 - moodshare - INFO - Rolling back post 136 to: name='жл ', text='жл'
+2026-02-08 12:46:18 - moodshare - DEBUG - Executing rollback statement...
+2026-02-08 12:46:18 - moodshare - DEBUG - Rollback executed, committing...
+2026-02-08 12:46:18 - moodshare - WARNING - Post 136 FLAGGED - rolled back to previous version (rows updated: 1)
+2026-02-08 12:46:18 - moodshare - DEBUG - Cache cleared for post 136
+2026-02-08 12:46:23 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:46:23 - moodshare - DEBUG - Result cached
+2026-02-08 12:46:31 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:47:01 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:47:01 - moodshare - DEBUG - Cache hit
+2026-02-08 12:48:27 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:48:27 - moodshare - DEBUG - Result cached
+2026-02-08 12:48:35 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:48:41 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:48:41 - moodshare - DEBUG - Cache hit
+2026-02-08 12:48:46 - moodshare - DEBUG - Cache hit
+2026-02-08 12:49:55 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:49:56 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:49:56 - moodshare - DEBUG - Result cached
+2026-02-08 12:50:07 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 12:50:08 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 12:50:08 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:50:10 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:50:10 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 12:50:14 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 12:50:14 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:51:46 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:51:46 - moodshare - DEBUG - Cache hit
+2026-02-08 12:51:52 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 12:51:52 - moodshare - INFO - Background AI check queued for post 137
+2026-02-08 12:51:52 - moodshare - INFO - Starting AI check for post 137...
+2026-02-08 12:51:53 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-08 12:51:53 - moodshare - DEBUG - Updating post 137 with is_approved=1
+2026-02-08 12:51:53 - moodshare - DEBUG - Cache cleared for post 137
+2026-02-08 12:51:53 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:51:53 - moodshare - DEBUG - Result cached
+2026-02-08 12:51:57 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 12:51:57 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:51:57 - moodshare - DEBUG - Result cached
+2026-02-08 12:55:36 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:55:40 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:55:47 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:55:52 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:55:52 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 12:55:53 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 12:55:53 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:56:29 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:56:30 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:56:42 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:56:43 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:56:43 - moodshare - DEBUG - Result cached
+2026-02-08 12:56:50 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 12:56:52 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-08 12:57:10 - moodshare - DEBUG - Cache hit
+2026-02-08 12:57:15 - moodshare - DEBUG - Cache hit
+2026-02-08 12:59:00 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 12:59:00 - moodshare - DEBUG - Result cached
+2026-02-08 12:59:17 - moodshare - DEBUG - Cache hit
+2026-02-08 12:59:17 - moodshare - DEBUG - Cache hit
+2026-02-08 12:59:42 - moodshare - DEBUG - Cache hit
+2026-02-08 12:59:55 - moodshare - DEBUG - Cache hit
+2026-02-08 12:59:55 - moodshare - DEBUG - Cache hit
+2026-02-08 13:00:11 - moodshare - DEBUG - Cache hit
+2026-02-08 13:00:11 - moodshare - DEBUG - Cache hit
+2026-02-08 13:02:25 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 13:02:25 - moodshare - DEBUG - Result cached
+2026-02-08 13:02:41 - moodshare - DEBUG - Cache hit
+2026-02-08 13:02:51 - moodshare - DEBUG - Cache hit
+2026-02-08 13:02:51 - moodshare - DEBUG - Cache hit
+2026-02-08 13:03:32 - moodshare - DEBUG - Cache hit
+2026-02-08 15:20:27 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-08 21:45:47 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 21:45:47 - moodshare - DEBUG - Result cached
+2026-02-08 21:45:56 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-08 21:45:56 - moodshare - DEBUG - Cache hit
+2026-02-08 21:46:21 - moodshare - DEBUG - Cache hit
+2026-02-08 21:46:21 - moodshare - DEBUG - Cache hit
+2026-02-08 21:46:27 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 21:46:27 - moodshare - INFO - Background AI check queued for post 138
+2026-02-08 21:46:27 - moodshare - INFO - Starting AI check for post 138...
+2026-02-08 21:46:28 - moodshare - ERROR - AI Filter error: Connection error.
+2026-02-08 21:46:28 - moodshare - DEBUG - Updating post 138 with is_approved=1
+2026-02-08 21:46:28 - moodshare - DEBUG - Cache cleared for post 138
+2026-02-08 21:46:28 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 21:46:28 - moodshare - DEBUG - Result cached
+2026-02-08 21:46:44 - moodshare - DEBUG - Cache hit
+2026-02-08 21:47:03 - moodshare - DEBUG - Cache hit
+2026-02-08 21:47:03 - moodshare - DEBUG - Cache hit
+2026-02-08 21:47:19 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 21:47:19 - moodshare - INFO - Background AI check queued for post 139
+2026-02-08 21:47:19 - moodshare - INFO - Starting AI check for post 139...
+2026-02-08 21:47:20 - moodshare - ERROR - AI Filter error: Connection error.
+2026-02-08 21:47:20 - moodshare - DEBUG - Updating post 139 with is_approved=1
+2026-02-08 21:47:20 - moodshare - DEBUG - Cache cleared for post 139
+2026-02-08 21:47:20 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 21:47:20 - moodshare - DEBUG - Result cached
+2026-02-08 21:47:47 - moodshare - INFO - Cache cleared after post creation
+2026-02-08 21:47:47 - moodshare - INFO - Background AI check queued for post 140
+2026-02-08 21:47:47 - moodshare - INFO - Starting AI check for post 140...
+2026-02-08 21:47:51 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-08 21:47:51 - moodshare - DEBUG - Updating post 140 with is_approved=0
+2026-02-08 21:47:51 - moodshare - DEBUG - Cache cleared for post 140
+2026-02-08 21:47:51 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 21:47:51 - moodshare - DEBUG - Result cached
+2026-02-08 21:48:11 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 21:48:14 - moodshare - INFO - Cache cleared after post delete
+2026-02-08 21:48:17 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 21:48:17 - moodshare - DEBUG - Result cached
+2026-02-08 21:48:18 - moodshare - DEBUG - Cache hit
+2026-02-08 21:48:18 - moodshare - DEBUG - Cache hit
+2026-02-08 22:34:18 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-08 22:34:18 - moodshare - DEBUG - Cache miss, querying database
+2026-02-08 22:34:18 - moodshare - DEBUG - Result cached
+2026-02-08 22:34:21 - moodshare - DEBUG - Cache hit
+2026-02-08 22:34:21 - moodshare - DEBUG - Cache hit
+2026-02-08 22:34:28 - moodshare - INFO - User 1 connected to chat 1
+2026-02-08 22:34:29 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-08 22:34:29 - moodshare - INFO - User 1 connected to chat 3
+2026-02-08 22:34:36 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-10 12:22:56 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-10 12:22:56 - moodshare - DEBUG - Cache miss, querying database
+2026-02-10 12:22:56 - moodshare - DEBUG - Result cached
+2026-02-10 12:23:01 - moodshare - DEBUG - Cache hit
+2026-02-10 12:23:01 - moodshare - DEBUG - Cache hit
+2026-02-10 12:23:07 - moodshare - DEBUG - Cache hit
+2026-02-11 20:18:54 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-11 20:18:54 - moodshare - DEBUG - Cache miss, querying database
+2026-02-11 20:18:55 - moodshare - DEBUG - Result cached
+2026-02-11 20:18:57 - moodshare - DEBUG - Cache hit
+2026-02-11 20:19:10 - moodshare - DEBUG - Cache hit
+2026-02-11 20:19:15 - moodshare - INFO - User 1 connected to chat 1
+2026-02-11 20:19:15 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-11 20:19:15 - moodshare - INFO - User 1 connected to chat 3
+2026-02-11 20:22:39 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-11 20:22:40 - moodshare - DEBUG - Cache miss, querying database
+2026-02-11 20:22:40 - moodshare - DEBUG - Result cached
+2026-02-11 20:22:44 - moodshare - DEBUG - Cache hit
+2026-02-11 22:40:06 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-11 22:40:20 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-11 22:40:20 - moodshare - DEBUG - Cache miss, querying database
+2026-02-11 22:40:21 - moodshare - DEBUG - Result cached
+2026-02-11 22:40:23 - moodshare - DEBUG - Cache hit
+2026-02-11 22:40:23 - moodshare - DEBUG - Cache hit
+2026-02-15 14:24:46 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-15 14:24:46 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:24:46 - moodshare - DEBUG - Result cached
+2026-02-15 14:24:49 - moodshare - DEBUG - Cache hit
+2026-02-15 14:30:38 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:30:38 - moodshare - DEBUG - Result cached
+2026-02-15 14:30:56 - moodshare - DEBUG - Cache hit
+2026-02-15 14:31:50 - moodshare - DEBUG - Cache hit
+2026-02-15 14:31:50 - moodshare - DEBUG - Cache hit
+2026-02-15 14:31:59 - moodshare - DEBUG - Cache hit
+2026-02-15 14:31:59 - moodshare - DEBUG - Cache hit
+2026-02-15 14:33:25 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:33:25 - moodshare - DEBUG - Result cached
+2026-02-15 14:34:48 - moodshare - INFO - Cache cleared after post creation
+2026-02-15 14:34:48 - moodshare - INFO - Background AI check queued for post 204
+2026-02-15 14:34:48 - moodshare - INFO - Starting AI check for post 204...
+2026-02-15 14:34:49 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-15 14:34:49 - moodshare - DEBUG - Updating post 204 with is_approved=1
+2026-02-15 14:34:49 - moodshare - DEBUG - Cache cleared for post 204
+2026-02-15 14:34:49 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:34:49 - moodshare - DEBUG - Result cached
+2026-02-15 14:35:25 - moodshare - INFO - Cache cleared after post creation
+2026-02-15 14:35:25 - moodshare - INFO - Background AI check queued for post 205
+2026-02-15 14:35:25 - moodshare - INFO - Starting AI check for post 205...
+2026-02-15 14:35:26 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-15 14:35:26 - moodshare - DEBUG - Updating post 205 with is_approved=0
+2026-02-15 14:35:26 - moodshare - DEBUG - Cache cleared for post 205
+2026-02-15 14:35:26 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:35:26 - moodshare - DEBUG - Result cached
+2026-02-15 14:37:08 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:37:10 - moodshare - INFO - Cache cleared after post delete
+2026-02-15 14:37:10 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:37:10 - moodshare - DEBUG - Result cached
+2026-02-15 14:37:28 - moodshare - INFO - Cache cleared after post creation
+2026-02-15 14:37:28 - moodshare - INFO - Starting AI check for post 206...
+2026-02-15 14:37:29 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-15 14:37:29 - moodshare - DEBUG - Updating post 206 with is_approved=1
+2026-02-15 14:37:29 - moodshare - INFO - Background AI check queued for post 206
+2026-02-15 14:37:29 - moodshare - DEBUG - Cache cleared for post 206
+2026-02-15 14:37:29 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:37:29 - moodshare - DEBUG - Result cached
+2026-02-15 14:40:00 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:41:55 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:42:26 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:42:47 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:44:16 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:44:28 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:46:00 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:46:09 - moodshare - INFO - Cache cleared after post delete
+2026-02-15 14:46:09 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:46:09 - moodshare - DEBUG - Result cached
+2026-02-15 14:46:18 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:21 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:22 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:23 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:41 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:55 - moodshare - DEBUG - Cache hit
+2026-02-15 14:46:57 - moodshare - DEBUG - Cache hit
+2026-02-15 14:47:01 - moodshare - DEBUG - Cache hit
+2026-02-15 14:47:13 - moodshare - INFO - Cache cleared after post creation
+2026-02-15 14:47:13 - moodshare - INFO - Background AI check queued for post 207
+2026-02-15 14:47:13 - moodshare - INFO - Starting AI check for post 207...
+2026-02-15 14:47:14 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-15 14:47:14 - moodshare - DEBUG - Updating post 207 with is_approved=1
+2026-02-15 14:47:14 - moodshare - DEBUG - Cache cleared for post 207
+2026-02-15 14:47:14 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:47:14 - moodshare - DEBUG - Result cached
+2026-02-15 14:48:05 - moodshare - INFO - Starting AI check for updated post 207...
+2026-02-15 14:48:06 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-15 14:48:06 - moodshare - INFO - Rolling back post 207 to: name='Story from life', text='I grew up in a small town where everyone knew each other, and life moved at a calm and predictable pace. My parents worked hard, and from a young age they taught me the value of responsibility, honesty, and patience. School was not always easy for me. I struggled with confidence and often doubted my abilities, but I had one teacher who believed in me when I did not believe in myself. She encouraged me to try, to fail, and to try again.
+ 
+ When I was sixteen, my family faced serious financial problems. I started working part-time after school to help at home. It was exhausting, but it changed me. I learned how to manage time, communicate with different people, and appreciate every small success. Those long evenings at work showed me that progress is built step by step.
+ 
+ After finishing school, I moved to a bigger city to study. Everything felt overwhelming at first: new faces, new challenges, and constant pressure to succeed. There were moments when I wanted to give up and return to my old life. But I remembered where I came from and why I started.
+ 
+ Today, I am still learning and growing. I understand that life is not about being perfect, but about moving forward despite fear. Every mistake becomes a lesson, and every challenge becomes a chance to become stronger.
+'
+2026-02-15 14:48:06 - moodshare - DEBUG - Executing rollback statement...
+2026-02-15 14:48:06 - moodshare - DEBUG - Rollback executed, committing...
+2026-02-15 14:48:06 - moodshare - WARNING - Post 207 FLAGGED - rolled back to previous version (rows updated: 1)
+2026-02-15 14:48:06 - moodshare - DEBUG - Cache cleared for post 207
+2026-02-15 14:48:25 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:48:25 - moodshare - DEBUG - Result cached
+2026-02-15 14:48:35 - moodshare - INFO - Cache cleared after post delete
+2026-02-15 14:48:35 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:48:35 - moodshare - DEBUG - Result cached
+2026-02-15 14:48:37 - moodshare - DEBUG - Cache hit
+2026-02-15 14:49:41 - moodshare - DEBUG - Cache hit
+2026-02-15 14:50:47 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:50:54 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 14:50:55 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 14:50:56 - moodshare - DEBUG - Result cached
+2026-02-15 14:50:59 - moodshare - DEBUG - Cache hit
+2026-02-15 21:47:55 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:48:06 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-15 21:48:06 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 21:48:06 - moodshare - DEBUG - Result cached
+2026-02-15 21:48:09 - moodshare - DEBUG - Cache hit
+2026-02-15 21:48:09 - moodshare - DEBUG - Cache hit
+2026-02-15 21:49:04 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:49:05 - moodshare - DEBUG - Cache hit
+2026-02-15 21:49:07 - moodshare - DEBUG - Cache hit
+2026-02-15 21:49:13 - moodshare - DEBUG - Cache hit
+2026-02-15 21:49:20 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:49:50 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:49:52 - moodshare - DEBUG - Cache hit
+2026-02-15 21:50:14 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 21:50:14 - moodshare - DEBUG - Result cached
+2026-02-15 21:50:32 - moodshare - INFO - Cache cleared after post creation
+2026-02-15 21:50:32 - moodshare - INFO - Background AI check queued for post 208
+2026-02-15 21:50:32 - moodshare - INFO - Starting AI check for post 208...
+2026-02-15 21:50:34 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-15 21:50:34 - moodshare - DEBUG - Updating post 208 with is_approved=1
+2026-02-15 21:50:34 - moodshare - DEBUG - Cache cleared for post 208
+2026-02-15 21:50:34 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 21:50:34 - moodshare - DEBUG - Result cached
+2026-02-15 21:51:03 - moodshare - DEBUG - Cache hit
+2026-02-15 21:51:03 - moodshare - DEBUG - Cache hit
+2026-02-15 21:51:23 - moodshare - DEBUG - Cache hit
+2026-02-15 21:52:21 - moodshare - DEBUG - Cache hit
+2026-02-15 21:52:21 - moodshare - DEBUG - Cache hit
+2026-02-15 21:53:16 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:53:25 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:53:33 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-15 21:54:21 - moodshare - DEBUG - Cache miss, querying database
+2026-02-15 21:54:21 - moodshare - DEBUG - Result cached
+2026-02-15 21:54:32 - moodshare - DEBUG - Cache hit
+2026-02-16 16:32:35 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-16 16:32:35 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 16:32:35 - moodshare - DEBUG - Result cached
+2026-02-16 16:32:39 - moodshare - DEBUG - Cache hit
+2026-02-16 16:33:08 - moodshare - DEBUG - Cache hit
+2026-02-16 16:33:26 - moodshare - INFO - User 1 connected to chat 4
+2026-02-16 16:33:31 - moodshare - INFO - User 1 disconnected from chat 4
+2026-02-16 16:33:31 - moodshare - INFO - User 1 connected to chat 3
+2026-02-16 16:33:35 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-16 16:33:35 - moodshare - INFO - User 1 connected to chat 5
+2026-02-16 16:33:36 - moodshare - INFO - User 1 disconnected from chat 5
+2026-02-16 16:33:36 - moodshare - INFO - User 1 connected to chat 6
+2026-02-16 16:35:32 - moodshare - INFO - User 1 disconnected from chat 6
+2026-02-16 16:35:32 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 16:35:57 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 16:38:20 - moodshare - INFO - User 1 connected to chat 6
+2026-02-16 16:38:22 - moodshare - INFO - User 1 disconnected from chat 6
+2026-02-16 16:38:22 - moodshare - INFO - User 1 connected to chat 7
+2026-02-16 16:38:23 - moodshare - INFO - User 1 disconnected from chat 7
+2026-02-16 16:38:23 - moodshare - INFO - User 1 connected to chat 6
+2026-02-16 16:38:24 - moodshare - INFO - User 1 disconnected from chat 6
+2026-02-16 16:38:42 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 16:38:42 - moodshare - DEBUG - Result cached
+2026-02-16 16:38:54 - moodshare - INFO - User 1 connected to chat 3
+2026-02-16 16:39:01 - moodshare - INFO - User 3 connected to chat 3
+2026-02-16 16:40:16 - moodshare - INFO - User 3 disconnected from chat 3
+2026-02-16 16:46:07 - moodshare - INFO - User 1 disconnected from chat 3
+2026-02-16 16:46:07 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 16:46:07 - moodshare - DEBUG - Result cached
+2026-02-16 16:46:07 - moodshare - DEBUG - Cache hit
+2026-02-16 21:40:03 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 21:40:18 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 22:06:35 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 22:09:57 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 22:10:08 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:10:08 - moodshare - DEBUG - Result cached
+2026-02-16 22:12:17 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-16 22:20:33 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:20:33 - moodshare - DEBUG - Result cached
+2026-02-16 22:20:37 - moodshare - DEBUG - Cache hit
+2026-02-16 22:20:53 - moodshare - INFO - Cache cleared after post creation
+2026-02-16 22:20:53 - moodshare - INFO - Background AI check queued for post 209
+2026-02-16 22:20:53 - moodshare - INFO - Starting AI check for post 209...
+2026-02-16 22:20:54 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-16 22:20:54 - moodshare - DEBUG - Updating post 209 with is_approved=1
+2026-02-16 22:20:54 - moodshare - DEBUG - Cache cleared for post 209
+2026-02-16 22:20:54 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:20:54 - moodshare - DEBUG - Result cached
+2026-02-16 22:21:05 - moodshare - INFO - Cache cleared after post creation
+2026-02-16 22:21:05 - moodshare - INFO - Background AI check queued for post 210
+2026-02-16 22:21:05 - moodshare - INFO - Starting AI check for post 210...
+2026-02-16 22:21:06 - moodshare - INFO - AI Filter result: FLAGGED - Response: yes
+2026-02-16 22:21:06 - moodshare - DEBUG - Updating post 210 with is_approved=0
+2026-02-16 22:21:06 - moodshare - DEBUG - Cache cleared for post 210
+2026-02-16 22:21:06 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:21:06 - moodshare - DEBUG - Result cached
+2026-02-16 22:23:33 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:23:33 - moodshare - DEBUG - Result cached
+2026-02-16 22:23:37 - moodshare - DEBUG - Cache hit
+2026-02-16 22:32:58 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:32:58 - moodshare - DEBUG - Result cached
+2026-02-16 22:34:57 - moodshare - DEBUG - Cache hit
+2026-02-16 22:34:58 - moodshare - DEBUG - Cache hit
+2026-02-16 22:35:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-16 22:35:05 - moodshare - DEBUG - Result cached
+2026-02-16 22:35:23 - moodshare - INFO - User 1 connected to chat 8
+2026-02-16 22:35:38 - moodshare - DEBUG - Cache hit
+2026-02-16 22:35:38 - moodshare - DEBUG - Cache hit
+2026-02-16 22:35:38 - moodshare - DEBUG - Cache hit
+2026-02-16 22:35:46 - moodshare - DEBUG - Cache hit
+2026-02-16 22:35:46 - moodshare - DEBUG - Cache hit
+2026-02-16 22:36:06 - moodshare - INFO - User 19 connected to chat 8
+2026-02-17 15:36:15 - moodshare - INFO - User 19 disconnected from chat 8
+2026-02-17 15:36:16 - moodshare - INFO - User 1 disconnected from chat 8
+2026-02-17 19:40:28 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-17 19:40:28 - moodshare - DEBUG - Cache miss, querying database
+2026-02-17 19:40:28 - moodshare - DEBUG - Result cached
+2026-02-17 19:40:37 - moodshare - DEBUG - Cache hit
+2026-02-17 19:40:38 - moodshare - DEBUG - Cache hit
+2026-02-17 19:41:21 - moodshare - INFO - Cache cleared after post creation
+2026-02-17 19:41:21 - moodshare - INFO - Background AI check queued for post 211
+2026-02-17 19:41:21 - moodshare - INFO - Starting AI check for post 211...
+2026-02-17 19:41:22 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-17 19:41:22 - moodshare - DEBUG - Updating post 211 with is_approved=1
+2026-02-17 19:41:22 - moodshare - DEBUG - Cache cleared for post 211
+2026-02-17 19:41:22 - moodshare - DEBUG - Cache miss, querying database
+2026-02-17 19:41:22 - moodshare - DEBUG - Result cached
+2026-02-17 19:41:30 - moodshare - INFO - Starting AI check for updated post 211...
+2026-02-17 19:41:31 - moodshare - INFO - AI Filter result: APPROVED - Response: no
+2026-02-17 19:41:31 - moodshare - INFO - Post 211 APPROVED by AI filter (rows updated: 1)
+2026-02-17 19:41:31 - moodshare - DEBUG - Cache cleared for post 211
+2026-02-17 19:41:36 - moodshare - DEBUG - Cache miss, querying database
+2026-02-17 19:41:36 - moodshare - DEBUG - Result cached
+2026-02-17 19:41:36 - moodshare - DEBUG - Cache hit
+2026-02-17 19:41:37 - moodshare - DEBUG - Cache hit
+2026-02-17 19:44:18 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-17 20:52:06 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-17 20:56:25 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-17 20:58:38 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-17 20:58:46 - moodshare - DEBUG - Cache miss, querying database
+2026-02-17 20:58:46 - moodshare - DEBUG - Result cached
+2026-02-17 20:59:04 - moodshare - INFO - Redis cache and RabbitMQ closed successfully
+2026-02-19 21:35:22 - moodshare - ERROR - JWT verification error: Signature has expired.
+2026-02-19 21:35:22 - moodshare - DEBUG - Cache miss, querying database
+2026-02-19 21:35:23 - moodshare - DEBUG - Result cached
+2026-02-19 21:35:29 - moodshare - DEBUG - Cache hit
+2026-02-19 21:35:29 - moodshare - DEBUG - Cache hit
+2026-02-19 21:38:54 - moodshare - INFO - User 1 connected to chat 1
+2026-02-19 21:39:05 - moodshare - INFO - User 1 disconnected from chat 1
+2026-02-19 21:39:05 - moodshare - DEBUG - Cache miss, querying database
+2026-02-19 21:39:05 - moodshare - DEBUG - Result cached
+2026-02-19 21:39:27 - moodshare - DEBUG - Cache hit
+2026-02-19 21:39:41 - moodshare - DEBUG - Cache hit
+2026-02-19 21:40:09 - moodshare - DEBUG - Cache hit
+2026-02-19 21:40:38 - moodshare - DEBUG - Cache hit
+2026-02-19 21:40:38 - moodshare - DEBUG - Cache hit

@@ -1,15 +1,20 @@
 from datetime import timedelta
-from fastapi import HTTPException, APIRouter, status, Depends, UploadFile, File, Form
+from fastapi import HTTPException, APIRouter, status, Depends, UploadFile, File, Form, Query, Request
 from fastapi.responses import StreamingResponse
-from sqlalchemy import insert, select, update, delete
+from sqlalchemy import insert, select, update, delete, func, or_
 from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.responses import RedirectResponse
+from sqlalchemy import select, insert
+import secrets
 from database_files.database import user_table
 from database_files.db_session import get_session
-from .models import UserCreate, UpdateUser, UserLogin, Token, UserResponse
+from users.oauth import oauth
+import os
+from .models import UpdateUser, UserLogin, Token, UserResponse
 from io import BytesIO
 
 
-from auth import (
+from users.auth import (
     get_password_hash, 
     verify_password, 
     create_access_token, 
@@ -22,6 +27,50 @@ router = APIRouter(
     tags=['Users'],
     prefix='/users'
 )
+
+@router.get('/auth/login/google')
+async def login_google(request: Request):
+    redirect_uri = "http://localhost:8000/users/auth/callback"
+    return await oauth.google.authorize_redirect(request, redirect_uri)
+
+
+
+
+
+@router.get('/auth/callback')
+async def google_auth_callback(request: Request, session: AsyncSession = Depends(get_session)):
+    try:
+        token = await oauth.google.authorize_access_token(request)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="Google Auth Error")
+
+    user_info = token.get('userinfo')
+    email = user_info.get('email')
+
+    stmt = select(user_table).where(user_table.c.email == email)
+    result = await session.execute(stmt)
+    db_user = result.fetchone()
+
+    if not db_user:
+        random_password = secrets.token_urlsafe(16)
+        hashed_password = get_password_hash(random_password)
+
+        stmt = insert(user_table).values(
+            username=user_info.get('name') or email.split('@')[0],
+            email=email,
+            password=hashed_password,
+        )
+        await session.execute(stmt)
+        await session.commit()
+
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(
+        data={"sub": email}, expires_delta=access_token_expires
+    )
+
+    frontend_base = os.getenv("FRONTEND", "http://localhost:3000")
+    frontend_url = f"{frontend_base}/auth/callback?token={access_token}"
+    return RedirectResponse(url=frontend_url)
 
 
 @router.post('/user/create', response_model=UserResponse)
@@ -96,8 +145,40 @@ async def login_user(user: UserLogin, session: AsyncSession = Depends(get_sessio
 
 
 @router.get('/user/me', response_model=UserResponse)
-async def get_current_user_info(current_user: dict = Depends(get_current_user)):
-    return UserResponse(**current_user)
+async def get_current_user_info(
+    current_user: dict = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session)
+):
+    stmt = select(user_table.c.avatar).where(user_table.c.id == current_user['id'])
+    result = await session.execute(stmt)
+    avatar = result.scalar_one_or_none()
+    return UserResponse(**current_user, user_avatar=bool(avatar))
+
+
+@router.get('/user/search')
+async def search_users(
+    query: str = Query('', max_length=50),
+    limit: int = Query(20, ge=1, le=100),
+    current_user: dict = Depends(get_current_user),
+    session: AsyncSession = Depends(get_session),
+) -> dict:
+    stmt = select(user_table.c.id, user_table.c.username, user_table.c.email)
+    if query:
+        q = f"%{query.lower()}%"
+        stmt = stmt.where(
+            or_(
+                func.lower(user_table.c.username).like(q),
+                func.lower(user_table.c.email).like(q),
+            )
+        )
+    stmt = stmt.where(user_table.c.id != current_user['id'])
+    stmt = stmt.order_by(user_table.c.username.asc()).limit(limit)
+    result = await session.execute(stmt)
+    users = [
+        {"id": row.id, "username": row.username, "email": row.email}
+        for row in result.fetchall()
+    ]
+    return {"users": users}
 
 
 @router.get('/user/{user_id}', response_model=UserResponse)
@@ -116,8 +197,11 @@ async def get_user(user_id: int, session: AsyncSession = Depends(get_session)):
         id=db_user[0],
         username=db_user[1],
         email=db_user[2],
-        password=len(db_user[3]) * '*'
+        password=len(db_user[3]) * '*',
+        user_avatar=bool(db_user[4]) if len(db_user) > 4 else False
     )
+
+
 
 
 @router.put('/user/update', response_model=UserResponse)

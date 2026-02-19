@@ -88,6 +88,23 @@ export interface CommentUpdate {
   text: string;
 }
 
+// Chat Types
+export interface ChatMessage {
+  id?: number;
+  chat_id: number;
+  from_user_id: number;
+  to_user_id?: number;
+  text: string;
+  has_image?: boolean;
+  created_at: string;
+}
+
+export interface ChatUser {
+  id: number;
+  username: string;
+  email: string;
+}
+
 // Follower Types
 export interface Follower {
   id: number;

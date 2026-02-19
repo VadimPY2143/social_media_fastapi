@@ -8,18 +8,25 @@ from sqlalchemy.ext.asyncio import AsyncSession as SQLAsyncSession
 from redis import asyncio as redis
 import traceback
 from logger import logger
+from langdetect import detect as detect_language
 
 
 load_dotenv()
 
 SYSTEM_PROMPT_FILTER = "You are a content filter. Your task is to determine if the given text contains inappropriate content (bad words, hate speech, violence, etc.) Be very careful. Look carefully for any signs of hate speech, violence, or other inappropriate content. Answer with 'Yes' or 'No' only."
-SYSTEM_PROMPT_SUMMARY = "You are a content summarizer. Your task is to summarize the given text in a concise and clear manner. You can use up to 250 characters. Answer with a summary of the text in the same language as the story was."
+SYSTEM_PROMPT_SUMMARY = "You are a content summarizer. Your task is to summarize the given text in a concise and clear manner. You can use up to 250 characters."
 
 
 client = OpenAI(
     api_key=os.getenv("API_KEY"),
     base_url="https://openrouter.ai/api/v1"
 )
+
+def detect_summary_language(text: str) -> str:
+    if text and text.strip():
+        lang = detect_language(text)
+        return lang
+    return "English"
 
 def filter_content(post_text: str, post_name: str) -> bool:
     try:
@@ -50,7 +57,6 @@ async def check_post_update_async(post_id: int, post_name: str, post_text: str, 
         
         async with SQLAsyncSession(bind=engine) as session:
             if is_inappropriate:
-                # Rollback to old values
                 logger.info(f"Rolling back post {post_id} to: name='{old_name}', text='{old_text}'")
                 rollback_stmt = update(post_table).where(post_table.c.id == post_id).values(
                     post_name=old_name,
@@ -113,12 +119,13 @@ async def check_post_async(post_id: int, post_name: str, post_text: str):
 
 async def summarize_content_async(post_text: str):
     try:
+        language = detect_summary_language(post_text or "")
         response = client.chat.completions.create(
             model="anthropic/claude-3-haiku",
             temperature=0.3,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT_SUMMARY},
-                {"role": "user", "content": f"Content: {post_text}"}
+                {"role": "user", "content": f"Summarize in {language} only. Content: {post_text}"}
             ],
         )
         result = response.choices[0].message.content.strip()
@@ -126,5 +133,4 @@ async def summarize_content_async(post_text: str):
     except Exception as e:
         print(f"AI Summary error: {e}")
         return None
-
 
